@@ -1,0 +1,79 @@
+{
+  "@@locale": "ar",
+
+  "appName": "سَكينة",
+  "appTagline": "طريق أهدأ للعيش مع إيمانك.",
+
+  "getStarted": "ابدأ الآن",
+  "continueLabel": "متابعة",
+  "back": "رجوع",
+  "skip": "تخطي",
+  "maybeLater": "ربما لاحقًا",
+  "retry": "إعادة المحاولة",
+
+  "onboardingLanguageTitle": "اختر لغتك",
+  "languageArabic": "العربية",
+  "languageEnglish": "English",
+
+  "onboardingLocationTitle": "اسمح بالوصول إلى الموقع لحساب مواقيت الصلاة واتجاه القبلة بدقة.",
+  "allowLocation": "السماح بالموقع",
+
+  "onboardingPrayerPrefsTitle": "تفضيلات الصلاة",
+  "calculationMethodLabel": "طريقة الحساب",
+  "madhabLabel": "المذهب",
+
+  "onboardingNotificationsTitle": "ابقَ على تواصل هادئ مع صلواتك وأذكارك اليومية.",
+  "allowNotifications": "السماح بالإشعارات",
+
+  "onboardingGoalsTitle": "على ماذا تودّ أن تركّز؟",
+  "onboardingGoalsSubtitle": "اختر ما تشاء، ويمكنك تغيير ذلك لاحقًا.",
+  "goalQuran": "القرآن",
+  "goalPrayer": "الصلاة",
+  "goalDhikr": "الذكر",
+  "goalDua": "الدعاء",
+  "goalMemorization": "الحفظ",
+  "goalConsistency": "الاستمرارية",
+  "beginJourney": "ابدأ",
+
+  "navHome": "الرئيسية",
+  "navQuran": "القرآن",
+  "navDhikr": "الذكر",
+  "navJourney": "المسيرة",
+  "navProfile": "الملف الشخصي",
+
+  "homeGreeting": "السلام عليكم",
+  "dailyIntentionTitle": "نية اليوم",
+  "dailyIntentionText": "خذ بضع دقائق اليوم لتجديد صلتك بالله.",
+  "begin": "ابدأ",
+
+  "yourQuran": "قرآنك",
+  "continueReading": "متابعة القراءة",
+  "ayahLabel": "الآية {number}",
+  "@ayahLabel": {
+    "placeholders": { "number": { "type": "int" } }
+  },
+
+  "todaysDhikr": "ذكر اليوم",
+  "start": "ابدأ",
+
+  "dailyDeedTitle": "عمل خير صغير",
+  "markAsDone": "تمّ الإنجاز",
+  "markedAsDone": "أُنجز اليوم",
+
+  "prayerCountdown": "بعد {time}",
+  "@prayerCountdown": {
+    "placeholders": { "time": { "type": "String" } }
+  },
+  "prayerEstimatedNotice": "تقديريّ — سيتزامن مع موقعك قريبًا",
+  "prayerFajr": "الفجر",
+  "prayerDhuhr": "الظهر",
+  "prayerAsr": "العصر",
+  "prayerMaghrib": "المغرب",
+  "prayerIsha": "العشاء",
+
+  "offlineNotice": "أنت غير متصل بالإنترنت — تُعرض بياناتك المحفوظة.",
+  "errorGeneric": "حدث خطأ ما. حاول مرة أخرى.",
+
+  "comingSoonTitle": "قريبًا",
+  "comingSoonBody": "هذا الجزء من سَكينة ما زال قيد الإعداد بعناية."
+}

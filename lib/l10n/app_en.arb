@@ -1,0 +1,79 @@
+{
+  "@@locale": "en",
+
+  "appName": "Sakīnah",
+  "appTagline": "A calmer way to live your faith.",
+
+  "getStarted": "Get Started",
+  "continueLabel": "Continue",
+  "back": "Back",
+  "skip": "Skip",
+  "maybeLater": "Maybe Later",
+  "retry": "Retry",
+
+  "onboardingLanguageTitle": "Choose your language",
+  "languageArabic": "العربية",
+  "languageEnglish": "English",
+
+  "onboardingLocationTitle": "Allow location to calculate accurate prayer times and Qibla.",
+  "allowLocation": "Allow Location",
+
+  "onboardingPrayerPrefsTitle": "Prayer preferences",
+  "calculationMethodLabel": "Calculation method",
+  "madhabLabel": "Madhab",
+
+  "onboardingNotificationsTitle": "Stay gently connected to your daily prayers and adhkar.",
+  "allowNotifications": "Allow Notifications",
+
+  "onboardingGoalsTitle": "What would you like to focus on?",
+  "onboardingGoalsSubtitle": "Choose as many as you like — you can change these later.",
+  "goalQuran": "Quran",
+  "goalPrayer": "Prayer",
+  "goalDhikr": "Dhikr",
+  "goalDua": "Du'a",
+  "goalMemorization": "Memorization",
+  "goalConsistency": "Consistency",
+  "beginJourney": "Begin",
+
+  "navHome": "Home",
+  "navQuran": "Quran",
+  "navDhikr": "Dhikr",
+  "navJourney": "Journey",
+  "navProfile": "Profile",
+
+  "homeGreeting": "Assalamu Alaikum",
+  "dailyIntentionTitle": "Today's intention",
+  "dailyIntentionText": "Take a few minutes to reconnect with Allah today.",
+  "begin": "Begin",
+
+  "yourQuran": "Your Quran",
+  "continueReading": "Continue reading",
+  "ayahLabel": "Ayah {number}",
+  "@ayahLabel": {
+    "placeholders": { "number": { "type": "int" } }
+  },
+
+  "todaysDhikr": "Today's Dhikr",
+  "start": "Start",
+
+  "dailyDeedTitle": "A small good deed",
+  "markAsDone": "Mark as done",
+  "markedAsDone": "Done for today",
+
+  "prayerCountdown": "in {time}",
+  "@prayerCountdown": {
+    "placeholders": { "time": { "type": "String" } }
+  },
+  "prayerEstimatedNotice": "Estimated — will sync with your location soon",
+  "prayerFajr": "Fajr",
+  "prayerDhuhr": "Dhuhr",
+  "prayerAsr": "Asr",
+  "prayerMaghrib": "Maghrib",
+  "prayerIsha": "Isha",
+
+  "offlineNotice": "You're offline — showing your saved data.",
+  "errorGeneric": "Something went wrong. Please try again.",
+
+  "comingSoonTitle": "Coming soon",
+  "comingSoonBody": "This part of Sakīnah is still being built with care."
+}

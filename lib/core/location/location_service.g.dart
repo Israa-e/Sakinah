@@ -1,27 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'static_prayer_repository.dart';
+part of 'location_service.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$prayerRepositoryHash() => r'4cfcdd8ff429c5c877e69330a6136c76d6e794b8';
+String _$locationServiceHash() => r'f7fd0ffb4698d96772b6ac4b6d14a429632720b2';
 
-/// See also [prayerRepository].
-@ProviderFor(prayerRepository)
-final prayerRepositoryProvider = Provider<PrayerRepository>.internal(
-  prayerRepository,
-  name: r'prayerRepositoryProvider',
+/// See also [locationService].
+@ProviderFor(locationService)
+final locationServiceProvider = Provider<LocationService>.internal(
+  locationService,
+  name: r'locationServiceProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$prayerRepositoryHash,
+      : _$locationServiceHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-typedef PrayerRepositoryRef = ProviderRef<PrayerRepository>;
+typedef LocationServiceRef = ProviderRef<LocationService>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

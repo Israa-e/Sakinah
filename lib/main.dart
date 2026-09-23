@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'app/app.dart';
 import 'core/logging/app_logger.dart';
+import 'core/notifications/notification_service.dart';
 import 'core/storage/preferences_service.dart';
 
 Future<void> main() async {
@@ -17,11 +18,14 @@ Future<void> main() async {
 
   final sharedPreferences = await SharedPreferences.getInstance();
 
+  final container = ProviderContainer(
+    overrides: [sharedPreferencesProvider.overrideWithValue(sharedPreferences)],
+  );
+  await container.read(notificationServiceProvider).initialize();
+
   runApp(
-    ProviderScope(
-      overrides: [
-        sharedPreferencesProvider.overrideWithValue(sharedPreferences),
-      ],
+    UncontrolledProviderScope(
+      container: container,
       child: const SakinahApp(),
     ),
   );

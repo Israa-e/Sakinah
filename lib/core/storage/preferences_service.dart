@@ -28,6 +28,9 @@ class PreferencesService {
   static const _kCalculationMethod = 'calculation_method';
   static const _kMadhab = 'madhab';
   static const _kGoals = 'onboarding_goals';
+  static const _kLastLatitude = 'last_latitude';
+  static const _kLastLongitude = 'last_longitude';
+  static const _kPrayerNotificationsEnabled = 'prayer_notifications_enabled';
 
   String? get locale => _prefs.getString(_kLocale);
   Future<void> setLocale(String languageCode) => _prefs.setString(_kLocale, languageCode);
@@ -64,6 +67,26 @@ class PreferencesService {
 
   List<String> get goals => _prefs.getStringList(_kGoals) ?? const [];
   Future<void> setGoals(List<String> goals) => _prefs.setStringList(_kGoals, goals);
+
+  /// The last successfully resolved device location, cached so Prayer/Qibla
+  /// have something to show instantly while a fresh GPS fix comes in — and
+  /// something to fall back on if the fresh fix fails.
+  (double, double)? get lastKnownLocation {
+    final lat = _prefs.getDouble(_kLastLatitude);
+    final lng = _prefs.getDouble(_kLastLongitude);
+    if (lat == null || lng == null) return null;
+    return (lat, lng);
+  }
+
+  Future<void> setLastKnownLocation(double latitude, double longitude) async {
+    await _prefs.setDouble(_kLastLatitude, latitude);
+    await _prefs.setDouble(_kLastLongitude, longitude);
+  }
+
+  bool get prayerNotificationsEnabled =>
+      _prefs.getBool(_kPrayerNotificationsEnabled) ?? false;
+  Future<void> setPrayerNotificationsEnabled(bool value) =>
+      _prefs.setBool(_kPrayerNotificationsEnabled, value);
 }
 
 @Riverpod(keepAlive: true)

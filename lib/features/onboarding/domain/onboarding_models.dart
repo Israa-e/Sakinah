@@ -1,28 +1,9 @@
-/// Prayer time calculation conventions. Names are the organizations/methods
-/// themselves (not translated) since that's how they're referenced in both
-/// languages; the real calculation engine arrives in the Prayer phase — this
-/// only records the user's preference.
-enum CalculationMethod {
-  muslimWorldLeague('Muslim World League'),
-  egyptian('Egyptian General Authority'),
-  karachi('University of Islamic Sciences, Karachi'),
-  ummAlQura('Umm Al-Qura University, Makkah'),
-  northAmerica('Islamic Society of North America'),
-  singapore('Majlis Ugama Islam Singapura'),
-  turkey('Diyanet İşleri Başkanlığı');
+/// Calculation method and madhab are genuine domain concepts owned by the
+/// Prayer feature (real angles/adjustments per method) — re-exported here so
+/// onboarding's preference step and Prayer's settings screen share the exact
+/// same, single source of truth instead of two parallel enums drifting apart.
+library;
 
-  const CalculationMethod(this.label);
-
-  final String label;
-}
-
-enum Madhab {
-  standard('Shafi\'i, Maliki & Hanbali'),
-  hanafi('Hanafi');
-
-  const Madhab(this.label);
-
-  final String label;
-}
+export 'package:adhan_dart/adhan_dart.dart' show CalculationMethod, Madhab;
 
 enum OnboardingGoal { quran, prayer, dhikr, dua, memorization, consistency }

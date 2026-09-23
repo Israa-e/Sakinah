@@ -6,16 +6,18 @@ A modern, offline-first Muslim daily companion: Quran, Salah, Dhikr, Du'a, Qibla
 
 This repository is being built **incrementally, phase by phase** (see [DEVELOPMENT ORDER](#development-order) below). What's implemented so far is real and runnable; everything else is scaffolded with a clear seam (a repository interface) so it can be filled in without touching the UI that depends on it.
 
-## Status: Phase 1 (Foundation) + Phase 2 slice (Onboarding → Home)
+## Status: Phases 1–3 (Foundation, Onboarding → Home, Prayer & Qibla)
 
 Implemented:
 - Full project foundation: architecture, state management, theming, localization, navigation, error handling, logging, local persistence.
 - Design system: colors, typography, spacing, radii, and a starter component library.
 - Onboarding flow: Welcome → Language → Location permission → Prayer preferences → Notifications permission → Goals.
-- Home screen: greeting + Gregorian/Hijri date, prayer countdown card (placeholder schedule pending Phase 3), daily intention, Quran progress (empty + in-progress states), today's dhikr preview, daily deed with completion toggle, offline banner.
-- A fully navigable five-tab shell (Home / Quran / Dhikr / Journey / Profile) — the four not-yet-built tabs show a calm "coming soon" placeholder rather than a dead end.
+- Home screen: greeting + Gregorian/Hijri date, live prayer countdown card, daily intention, Quran progress (empty + in-progress states), today's dhikr preview, daily deed with completion toggle, offline banner.
+- **Prayer**: real Adhan-based calculation (`adhan_dart`) from device location + the calculation method/madhab chosen in onboarding (editable later from the Prayer screen), a full daily prayer-time list, and local notifications for each prayer (toggle in the Prayer screen). Falls back to a clearly-marked estimated schedule when location isn't available (denied permission, no fix, offline).
+- **Qibla**: live compass screen (device heading + great-circle bearing to the Kaaba), with distinct states for permission denied, location unavailable, sensor unavailable, and "needs calibration."
+- A fully navigable five-tab shell (Home / Quran / Dhikr / Journey / Profile) — the three not-yet-built tabs show a calm "coming soon" placeholder rather than a dead end; Prayer and Qibla are reached from the Home prayer card / Prayer screen rather than the tab bar, matching the spec's navigation list.
 
-Not yet implemented (scaffolded via domain interfaces, ready to be filled in): real Adhan-based prayer calculation, Quran reader + audio, Dhikr sessions/tasbeeh, Journey/Garden, Reflection, Duas, Ramadan, Zakat, Hijri calendar screen, Ask Sakīnah, Profile/Settings screens.
+Not yet implemented (scaffolded via domain interfaces, ready to be filled in): Quran reader + audio, Dhikr sessions/tasbeeh, Journey/Garden, Reflection, Duas, Ramadan, Zakat, Hijri calendar screen, Ask Sakīnah, Profile/Settings screens.
 
 ## Screenshots
 
@@ -44,8 +46,9 @@ lib/
   features/
     onboarding/    # data/ domain/ presentation/
     home/
-    prayer/        # placeholder repository — real calculation lands in Phase 3
-    quran/ dhikr/ journey/ dua/ qibla/ reflection/ ramadan/ zakat/
+    prayer/        # real Adhan-based calculation + notifications
+    qibla/         # live compass + Qibla bearing
+    quran/ dhikr/ journey/ dua/ reflection/ ramadan/ zakat/
     hijri_calendar/ ask_sakinah/ profile/   # not yet implemented
   l10n/            # ARB source strings + generated AppLocalizations
   main.dart
@@ -63,6 +66,8 @@ dart run build_runner build --delete-conflicting-outputs   # regenerate Riverpod
 
 Fonts (IBM Plex Sans Arabic, Noto Naskh Arabic, Inter) are bundled under `assets/fonts/` for true offline-first typography — no runtime font fetching.
 
+Location (prayer times/Qibla) and notification permissions are declared in `android/app/src/main/AndroidManifest.xml` and `ios/Runner/Info.plist` — real device/emulator testing of Prayer and Qibla needs a location fix (or the Android emulator's extended-controls location panel) and, on first launch, granting the permissions requested during onboarding.
+
 ## Development
 
 ```bash
@@ -75,8 +80,8 @@ Whenever you change a file containing `@riverpod`/`@Riverpod`/`@DriftDatabase`, 
 
 ## Testing
 
-- `test/` — widget tests (start with a cold-start smoke test verifying the onboarding Welcome step renders).
-- Unit tests for domain logic (prayer countdown math, Quran progress, garden/journey calculations, etc.) land alongside each feature as it's implemented.
+- `test/features/<feature>/` — unit tests for pure domain logic (e.g. `PrayerSchedule.nextFrom`, `QiblaReading.relativeAngle`/`needsCalibration`) and widget tests for screens, with fake repositories (`test/fakes/`) standing in for location/compass/network so tests stay fast and hermetic.
+- `test/widget_test.dart` — cold-start smoke test verifying the onboarding Welcome step renders.
 - Integration tests for full flows (Onboarding → Home, Home → Quran → Reader, ...) land once those flows exist end-to-end.
 
 ## Localization

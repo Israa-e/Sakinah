@@ -12,7 +12,7 @@ class OnboardingData {
     this.locationGranted,
     this.notificationsGranted,
     this.calculationMethod = CalculationMethod.muslimWorldLeague,
-    this.madhab = Madhab.standard,
+    this.madhab = Madhab.shafi,
     this.goals = const {},
   });
 
@@ -88,6 +88,7 @@ class OnboardingController extends _$OnboardingController {
     await prefs.setCalculationMethod(state.calculationMethod.name);
     await prefs.setMadhab(state.madhab.name);
     await prefs.setGoals(state.goals.map((g) => g.name).toList());
+    await prefs.setPrayerNotificationsEnabled(state.notificationsGranted ?? false);
     await ref.read(onboardingStatusProvider.notifier).complete();
   }
 }

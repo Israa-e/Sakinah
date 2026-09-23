@@ -38,6 +38,10 @@ final class AudioFailure extends AppFailure {
   const AudioFailure({super.debugMessage});
 }
 
+final class SensorFailure extends AppFailure {
+  const SensorFailure({super.debugMessage});
+}
+
 final class ValidationFailure extends AppFailure {
   const ValidationFailure({super.debugMessage});
 }

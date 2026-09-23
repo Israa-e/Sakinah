@@ -7,6 +7,8 @@ import '../../core/widgets/coming_soon_screen.dart';
 import '../../features/home/presentation/screens/home_screen.dart';
 import '../../features/onboarding/domain/onboarding_status_provider.dart';
 import '../../features/onboarding/presentation/screens/onboarding_screen.dart';
+import '../../features/prayer/presentation/screens/prayer_screen.dart';
+import '../../features/qibla/presentation/screens/qibla_screen.dart';
 import 'app_shell.dart';
 
 part 'app_router.g.dart';
@@ -18,6 +20,8 @@ abstract final class AppRoutes {
   static const dhikr = '/dhikr';
   static const journey = '/journey';
   static const profile = '/profile';
+  static const prayer = '/prayer';
+  static const qibla = '/qibla';
 }
 
 @Riverpod(keepAlive: true)
@@ -40,6 +44,14 @@ GoRouter appRouter(Ref ref) {
       GoRoute(
         path: AppRoutes.onboarding,
         builder: (context, state) => const OnboardingScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.prayer,
+        builder: (context, state) => const PrayerScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.qibla,
+        builder: (context, state) => const QiblaScreen(),
       ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) =>

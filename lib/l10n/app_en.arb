@@ -75,5 +75,19 @@
   "errorGeneric": "Something went wrong. Please try again.",
 
   "comingSoonTitle": "Coming soon",
-  "comingSoonBody": "This part of Sakīnah is still being built with care."
+  "comingSoonBody": "This part of Sakīnah is still being built with care.",
+
+  "prayerScreenTitle": "Prayer",
+  "prayerSettingsTitle": "Prayer preferences",
+  "prayerNotificationsLabel": "Prayer notifications",
+  "prayerNotificationsSubtitle": "Get a gentle reminder when each prayer time begins.",
+  "qiblaButton": "Qibla direction",
+
+  "qiblaTitle": "Qibla",
+  "qiblaFacingIt": "You're facing the Qibla",
+  "qiblaCalibrateHint": "Move your phone in a figure-eight to calibrate the compass",
+  "qiblaPermissionDenied": "Location access is needed to find the Qibla direction.",
+  "qiblaLocationUnavailable": "Couldn't determine your location. Check your connection and try again.",
+  "qiblaSensorUnavailable": "This device doesn't have a compass sensor.",
+  "openSettings": "Open Settings"
 }

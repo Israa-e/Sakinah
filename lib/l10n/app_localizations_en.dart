@@ -182,4 +182,45 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get comingSoonBody =>
       'This part of Sakīnah is still being built with care.';
+
+  @override
+  String get prayerScreenTitle => 'Prayer';
+
+  @override
+  String get prayerSettingsTitle => 'Prayer preferences';
+
+  @override
+  String get prayerNotificationsLabel => 'Prayer notifications';
+
+  @override
+  String get prayerNotificationsSubtitle =>
+      'Get a gentle reminder when each prayer time begins.';
+
+  @override
+  String get qiblaButton => 'Qibla direction';
+
+  @override
+  String get qiblaTitle => 'Qibla';
+
+  @override
+  String get qiblaFacingIt => 'You\'re facing the Qibla';
+
+  @override
+  String get qiblaCalibrateHint =>
+      'Move your phone in a figure-eight to calibrate the compass';
+
+  @override
+  String get qiblaPermissionDenied =>
+      'Location access is needed to find the Qibla direction.';
+
+  @override
+  String get qiblaLocationUnavailable =>
+      'Couldn\'t determine your location. Check your connection and try again.';
+
+  @override
+  String get qiblaSensorUnavailable =>
+      'This device doesn\'t have a compass sensor.';
+
+  @override
+  String get openSettings => 'Open Settings';
 }

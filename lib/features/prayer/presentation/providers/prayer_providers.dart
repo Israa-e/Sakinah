@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../data/static_prayer_repository.dart';
+import '../../data/adhan_prayer_repository.dart';
 import '../../domain/prayer_models.dart';
 
 part 'prayer_providers.g.dart';

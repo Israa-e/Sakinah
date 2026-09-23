@@ -13,6 +13,8 @@ Practical rules this codebase follows, and how to verify them as features land.
 
 - Drift's reactive queries (`Stream<List<Row>>` / `.watchSingle...`) feed Riverpod `StreamProvider`s directly — a write anywhere (e.g. marking the daily deed done) is reflected everywhere it's watched with no manual cache invalidation.
 - `keepAlive: true` is used deliberately for app-wide singletons (Dio client, Drift database, preferences, router) so they aren't rebuilt/reconnected on every navigation. Screen-scoped or search-like providers should use the default `autoDispose` once they exist, so their cache doesn't outlive the screen.
+- The Qibla compass stream (`qiblaProvider`) is deliberately plain `@riverpod` (autoDispose), not `keepAlive` — the magnetometer stops being read the moment the user leaves the Qibla screen, instead of running for the lifetime of the app.
+- The prayer schedule/clock providers are `autoDispose` too, but are kept alive indirectly for as long as the app runs because `PrayerNotificationScheduler` (a `keepAlive` provider watched once from `SakinahApp`) holds a subscription — one intentional exception, not a general pattern to copy elsewhere.
 - No network or database call happens inside `build()` — repositories are read through providers that resolve before the widget tree needs the value, and loading states (`AsyncValue.loading`) render a `SkeletonLoader` sized like the eventual content so nothing jumps.
 
 ## Database

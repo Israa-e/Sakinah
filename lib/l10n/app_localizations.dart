@@ -427,6 +427,78 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'This part of Sakīnah is still being built with care.'**
   String get comingSoonBody;
+
+  /// No description provided for @prayerScreenTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Prayer'**
+  String get prayerScreenTitle;
+
+  /// No description provided for @prayerSettingsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Prayer preferences'**
+  String get prayerSettingsTitle;
+
+  /// No description provided for @prayerNotificationsLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Prayer notifications'**
+  String get prayerNotificationsLabel;
+
+  /// No description provided for @prayerNotificationsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Get a gentle reminder when each prayer time begins.'**
+  String get prayerNotificationsSubtitle;
+
+  /// No description provided for @qiblaButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Qibla direction'**
+  String get qiblaButton;
+
+  /// No description provided for @qiblaTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Qibla'**
+  String get qiblaTitle;
+
+  /// No description provided for @qiblaFacingIt.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'re facing the Qibla'**
+  String get qiblaFacingIt;
+
+  /// No description provided for @qiblaCalibrateHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Move your phone in a figure-eight to calibrate the compass'**
+  String get qiblaCalibrateHint;
+
+  /// No description provided for @qiblaPermissionDenied.
+  ///
+  /// In en, this message translates to:
+  /// **'Location access is needed to find the Qibla direction.'**
+  String get qiblaPermissionDenied;
+
+  /// No description provided for @qiblaLocationUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t determine your location. Check your connection and try again.'**
+  String get qiblaLocationUnavailable;
+
+  /// No description provided for @qiblaSensorUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'This device doesn\'t have a compass sensor.'**
+  String get qiblaSensorUnavailable;
+
+  /// No description provided for @openSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Open Settings'**
+  String get openSettings;
 }
 
 class _AppLocalizationsDelegate

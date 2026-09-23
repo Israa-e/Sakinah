@@ -79,15 +79,23 @@ Prayer/Quran/journey data is inherently relational (an `Ayah` belongs to a `Sura
 
 - `Dio` with interceptors for logging (debug only), timeouts, and connectivity awareness (`connectivity_plus` gates requests instead of letting them hang).
 - All repository methods that hit the network return a `Result<T>` (`core/errors/result.dart`): a sealed `Success<T>` / `Failure` type. UI never catches raw exceptions — it pattern-matches on `Result`.
-- Failures are mapped to a closed `AppFailure` enum/sealed hierarchy (`network`, `timeout`, `server`, `cache`, `permission`, `location`, `unknown`) with a human-readable message resolved at the presentation layer (so messages can be localized).
+- Failures are mapped to a closed `AppFailure` sealed hierarchy (`network`, `timeout`, `server`, `cache`, `permission`, `location`, `audio`, `sensor`, `validation`, `unknown`) with a human-readable message resolved at the presentation layer (so messages can be localized).
 
 ## Navigation
 
-`go_router`, using `StatefulShellRoute.indexedStack` for the bottom-navigation tier (Home/Quran/Dhikr/Journey/Profile) so each tab preserves its own navigation stack and scroll position. A top-level `redirect` guards the onboarding flow (see `app/router/app_router.dart`): unauthenticated/not-onboarded users are redirected to `/onboarding`, everyone else reaches the shell.
+`go_router`, using `StatefulShellRoute.indexedStack` for the bottom-navigation tier (Home/Quran/Dhikr/Journey/Profile) so each tab preserves its own navigation stack and scroll position. A top-level `redirect` guards the onboarding flow (see `app/router/app_router.dart`): unauthenticated/not-onboarded users are redirected to `/onboarding`, everyone else reaches the shell. Screens that aren't one of the five tabs (Prayer, Qibla) are registered as sibling top-level routes pushed on top of the shell, matching the spec's own navigation list — they're reached via a button/card, not a tab.
 
 ## Localization
 
-Flutter's built-in `gen_l10n` (ARB files under `lib/l10n/`) + `flutter_localizations`. No hardcoded user-facing strings — every string is a getter on `AppLocalizations`. Arabic (`ar`) is treated as a first-class locale, not an afterthought: layout direction, icon mirroring, and font selection all key off `Directionality`/`Localizations.localeOf(context)`.
+Flutter's built-in `gen_l10n` (ARB files under `lib/l10n/`) + `flutter_localizations`. No hardcoded user-facing strings — every string is a getter on `AppLocalizations`. Arabic (`ar`) is treated as a first-class locale, not an afterthought: layout direction, icon mirroring, and font selection all key off `Directionality`/`Localizations.localeOf(context)`. One exception is worth noting explicitly: background code that isn't running under a `BuildContext` (the prayer-notification scheduler) uses the generated `lookupAppLocalizations(Locale)` top-level function instead — same ARB-backed strings, no context needed.
+
+## Prayer, Qibla & notifications (Phase 3)
+
+- **Calculation:** `adhan_dart` (a Dart port of the widely-used Adhan library) computes real prayer times from coordinates + a `CalculationMethod`/`Madhab` pair. Its own enums are used directly as Sakīnah's domain types for these two concepts (re-exported from `features/onboarding/domain/onboarding_models.dart` and `features/prayer/domain`) rather than reinventing a parallel enum — the angle/adjustment values per method are exactly what makes each method correct, and hand-copying them risks a subtle, hard-to-notice religious-accuracy bug. This is a deliberate, narrow exception to "domain shouldn't depend on a third-party package"; it's a plain value type, not a service, so it doesn't compromise testability.
+- **Location:** `geolocator`, behind a `LocationService` interface (`core/location/`) so repositories never touch the plugin directly. The last successful fix is cached (`PreferencesService.lastKnownLocation`) so a temporary GPS/permission failure still has something recent to compute from instead of falling all the way back to the estimated schedule.
+- **Fallback:** when no location — fresh or cached — is available at all, `AdhanPrayerRepository` falls back to `StaticPrayerRepository`'s fixed offsets, with `PrayerSchedule.isEstimated = true` so the UI can say so rather than presenting a guess as authoritative.
+- **Qibla:** `flutter_compass` for device heading, combined with `adhan_dart`'s `Qibla.qibla()` great-circle bearing. Compass and location failures are surfaced as distinct `AppFailure` cases (`SensorFailure`, `PermissionFailure`, `LocationFailure`) so the Qibla screen can show the right message instead of one generic error.
+- **Notifications:** `flutter_local_notifications` + `timezone`/`flutter_timezone` (to schedule in the device's real local time rather than UTC). Scheduling uses `AndroidScheduleMode.inexactAllowWhileIdle`, which needs no special "exact alarm" permission — acceptable slop for a reminder, not a strict requirement. Every plugin call is wrapped defensively (logged, never thrown) since a failed notification schedule must never crash or block the rest of the app.
 
 ## Audio (planned, Phase 4)
 

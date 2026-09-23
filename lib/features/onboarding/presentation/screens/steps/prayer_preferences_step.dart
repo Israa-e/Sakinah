@@ -1,11 +1,12 @@
+import 'package:adhan_dart/adhan_dart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../../core/constants/app_radius.dart';
 import '../../../../../core/constants/app_spacing.dart';
 import '../../../../../core/extensions/build_context_extensions.dart';
 import '../../../../../core/widgets/sakinah_button.dart';
-import '../../../domain/onboarding_models.dart';
+import '../../../../../core/widgets/sakinah_dropdown.dart';
+import '../../../../prayer/domain/common_calculation_methods.dart';
 import '../../controllers/onboarding_controller.dart';
 import '../../widgets/onboarding_scaffold.dart';
 
@@ -41,63 +42,22 @@ class PrayerPreferencesStep extends ConsumerWidget {
           const SizedBox(height: AppSpacing.xl),
           Text(l10n.calculationMethodLabel, style: context.textStyles.labelLarge),
           const SizedBox(height: AppSpacing.xs),
-          _Dropdown<CalculationMethod>(
+          SakinahDropdown<CalculationMethod>(
             value: data.calculationMethod,
-            items: CalculationMethod.values,
-            labelOf: (m) => m.label,
+            items: commonCalculationMethods,
+            labelOf: (m) => m.displayName,
             onChanged: controller.setCalculationMethod,
           ),
           const SizedBox(height: AppSpacing.lg),
           Text(l10n.madhabLabel, style: context.textStyles.labelLarge),
           const SizedBox(height: AppSpacing.xs),
-          _Dropdown<Madhab>(
+          SakinahDropdown<Madhab>(
             value: data.madhab,
             items: Madhab.values,
-            labelOf: (m) => m.label,
+            labelOf: (m) => m == Madhab.hanafi ? 'Hanafi' : "Shafi'i, Maliki & Hanbali",
             onChanged: controller.setMadhab,
           ),
         ],
-      ),
-    );
-  }
-}
-
-class _Dropdown<T> extends StatelessWidget {
-  const _Dropdown({
-    required this.value,
-    required this.items,
-    required this.labelOf,
-    required this.onChanged,
-    super.key,
-  });
-
-  final T value;
-  final List<T> items;
-  final String Function(T) labelOf;
-  final ValueChanged<T> onChanged;
-
-  @override
-  Widget build(BuildContext context) {
-    final colorScheme = context.colors;
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
-      decoration: BoxDecoration(
-        color: colorScheme.surfaceContainerHighest,
-        borderRadius: AppRadius.mediumAll,
-      ),
-      child: DropdownButtonHideUnderline(
-        child: DropdownButton<T>(
-          value: value,
-          isExpanded: true,
-          borderRadius: AppRadius.mediumAll,
-          items: [
-            for (final item in items)
-              DropdownMenuItem(value: item, child: Text(labelOf(item))),
-          ],
-          onChanged: (v) {
-            if (v != null) onChanged(v);
-          },
-        ),
       ),
     );
   }

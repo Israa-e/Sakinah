@@ -105,7 +105,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get navJourney => 'المسيرة';
 
   @override
-  String get navProfile => 'الملف الشخصي';
+  String get navProfile => 'أنا';
 
   @override
   String get homeGreeting => 'السلام عليكم';
@@ -180,4 +180,44 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get comingSoonBody => 'هذا الجزء من سَكينة ما زال قيد الإعداد بعناية.';
+
+  @override
+  String get prayerScreenTitle => 'الصلاة';
+
+  @override
+  String get prayerSettingsTitle => 'تفضيلات الصلاة';
+
+  @override
+  String get prayerNotificationsLabel => 'إشعارات الصلاة';
+
+  @override
+  String get prayerNotificationsSubtitle =>
+      'احصل على تذكير هادئ عند دخول وقت كل صلاة.';
+
+  @override
+  String get qiblaButton => 'اتجاه القبلة';
+
+  @override
+  String get qiblaTitle => 'القبلة';
+
+  @override
+  String get qiblaFacingIt => 'أنت متجه نحو القبلة';
+
+  @override
+  String get qiblaCalibrateHint =>
+      'حرّك هاتفك على شكل رقم ثمانية لمعايرة البوصلة';
+
+  @override
+  String get qiblaPermissionDenied =>
+      'يلزم الوصول إلى الموقع لتحديد اتجاه القبلة.';
+
+  @override
+  String get qiblaLocationUnavailable =>
+      'تعذّر تحديد موقعك. تحقق من الاتصال وحاول مرة أخرى.';
+
+  @override
+  String get qiblaSensorUnavailable => 'هذا الجهاز لا يحتوي على حساس بوصلة.';
+
+  @override
+  String get openSettings => 'فتح الإعدادات';
 }

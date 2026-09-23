@@ -39,7 +39,7 @@
   "navQuran": "القرآن",
   "navDhikr": "الذكر",
   "navJourney": "المسيرة",
-  "navProfile": "الملف الشخصي",
+  "navProfile": "أنا",
 
   "homeGreeting": "السلام عليكم",
   "dailyIntentionTitle": "نية اليوم",
@@ -75,5 +75,19 @@
   "errorGeneric": "حدث خطأ ما. حاول مرة أخرى.",
 
   "comingSoonTitle": "قريبًا",
-  "comingSoonBody": "هذا الجزء من سَكينة ما زال قيد الإعداد بعناية."
+  "comingSoonBody": "هذا الجزء من سَكينة ما زال قيد الإعداد بعناية.",
+
+  "prayerScreenTitle": "الصلاة",
+  "prayerSettingsTitle": "تفضيلات الصلاة",
+  "prayerNotificationsLabel": "إشعارات الصلاة",
+  "prayerNotificationsSubtitle": "احصل على تذكير هادئ عند دخول وقت كل صلاة.",
+  "qiblaButton": "اتجاه القبلة",
+
+  "qiblaTitle": "القبلة",
+  "qiblaFacingIt": "أنت متجه نحو القبلة",
+  "qiblaCalibrateHint": "حرّك هاتفك على شكل رقم ثمانية لمعايرة البوصلة",
+  "qiblaPermissionDenied": "يلزم الوصول إلى الموقع لتحديد اتجاه القبلة.",
+  "qiblaLocationUnavailable": "تعذّر تحديد موقعك. تحقق من الاتصال وحاول مرة أخرى.",
+  "qiblaSensorUnavailable": "هذا الجهاز لا يحتوي على حساس بوصلة.",
+  "openSettings": "فتح الإعدادات"
 }

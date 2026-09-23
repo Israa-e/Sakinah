@@ -1,15 +1,11 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
-
 import '../domain/prayer_models.dart';
 import '../domain/prayer_repository.dart';
 
-part 'static_prayer_repository.g.dart';
-
-/// Placeholder schedule so the Home prayer card has something real to render
-/// before Phase 3 wires up location + calculation-method-based calculation.
-/// Times are fixed offsets from local midnight — not derived from Adhan
-/// astronomical calculation, hence [PrayerSchedule.isEstimated].
+/// Fallback schedule used by [AdhanPrayerRepository] whenever a real
+/// location fix (fresh or cached) isn't available — e.g. permission denied,
+/// GPS unavailable, first launch offline. Times are fixed offsets from local
+/// midnight, not derived from astronomical calculation, hence
+/// [PrayerSchedule.isEstimated].
 class StaticPrayerRepository implements PrayerRepository {
   static const _offsets = {
     PrayerName.fajr: Duration(hours: 5, minutes: 12),
@@ -32,6 +28,3 @@ class StaticPrayerRepository implements PrayerRepository {
     );
   }
 }
-
-@Riverpod(keepAlive: true)
-PrayerRepository prayerRepository(Ref ref) => StaticPrayerRepository();

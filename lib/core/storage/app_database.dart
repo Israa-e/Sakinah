@@ -34,14 +34,126 @@ class DailyDeedEntries extends Table {
   Set<Column> get primaryKey => {day};
 }
 
-@DriftDatabase(tables: [QuranProgressEntries, DailyDeedEntries])
+/// Offline cache of Quran text fetched from api.alquran.cloud. Every row
+/// carries its translator so unattributed translation text can't exist.
+class CachedAyahs extends Table {
+  IntColumn get surahNumber => integer()();
+  IntColumn get ayahNumber => integer()();
+
+  /// Global ayah number (1–6236) — used for per-ayah recitation audio URLs.
+  IntColumn get globalNumber => integer()();
+  IntColumn get juz => integer()();
+  TextColumn get textAr => text()();
+  TextColumn get translationEn => text()();
+  TextColumn get translatorName => text()();
+
+  @override
+  Set<Column> get primaryKey => {surahNumber, ayahNumber};
+}
+
+class AyahBookmarks extends Table {
+  IntColumn get id => integer().autoIncrement()();
+  IntColumn get surahNumber => integer()();
+  IntColumn get ayahNumber => integer()();
+  DateTimeColumn get createdAt => dateTime().withDefault(currentDateAndTime)();
+
+  @override
+  List<Set<Column>> get uniqueKeys => [
+        {surahNumber, ayahNumber},
+      ];
+}
+
+/// Personal reflections — optionally tied to an ayah (null = general).
+class Reflections extends Table {
+  IntColumn get id => integer().autoIncrement()();
+  IntColumn get surahNumber => integer().nullable()();
+  IntColumn get ayahNumber => integer().nullable()();
+  TextColumn get body => text()();
+  TextColumn get mood => text().nullable()();
+  DateTimeColumn get createdAt => dateTime().withDefault(currentDateAndTime)();
+}
+
+/// Daily tasbeeh totals per dhikr item. [dhikrKey] is the stable id of a
+/// bundled, sourced dhikr item (see features/dhikr/data).
+class DhikrLogs extends Table {
+  TextColumn get dhikrKey => text()();
+  DateTimeColumn get day => dateTime()();
+  IntColumn get count => integer().withDefault(const Constant(0))();
+  DateTimeColumn get updatedAt => dateTime().withDefault(currentDateAndTime)();
+
+  @override
+  Set<Column> get primaryKey => {dhikrKey, day};
+}
+
+/// Du'as the user saved. [duaKey] is the stable id of a bundled, sourced du'a.
+class SavedDuas extends Table {
+  TextColumn get duaKey => text()();
+  DateTimeColumn get createdAt => dateTime().withDefault(currentDateAndTime)();
+
+  @override
+  Set<Column> get primaryKey => {duaKey};
+}
+
+/// Which of the five daily prayers the user marked as prayed.
+class PrayerLogs extends Table {
+  DateTimeColumn get day => dateTime()();
+
+  /// `PrayerName.name` (fajr, dhuhr, asr, maghrib, isha).
+  TextColumn get prayer => text()();
+  BoolColumn get completed => boolean().withDefault(const Constant(true))();
+
+  @override
+  Set<Column> get primaryKey => {day, prayer};
+}
+
+/// Ayahs read per day — feeds the Journey streak/garden.
+class ReadingLogs extends Table {
+  DateTimeColumn get day => dateTime()();
+  IntColumn get ayahsRead => integer().withDefault(const Constant(0))();
+
+  @override
+  Set<Column> get primaryKey => {day};
+}
+
+@DriftDatabase(
+  tables: [
+    QuranProgressEntries,
+    DailyDeedEntries,
+    CachedAyahs,
+    AyahBookmarks,
+    Reflections,
+    DhikrLogs,
+    SavedDuas,
+    PrayerLogs,
+    ReadingLogs,
+  ],
+)
 class AppDatabase extends _$AppDatabase {
   AppDatabase() : super(_openConnection());
 
   AppDatabase.forTesting(super.executor);
 
   @override
-  int get schemaVersion => 1;
+  int get schemaVersion => 2;
+
+  @override
+  MigrationStrategy get migration => MigrationStrategy(
+        onCreate: (m) => m.createAll(),
+        onUpgrade: (m, from, to) async {
+          if (from < 2) {
+            await m.createTable(cachedAyahs);
+            await m.createTable(ayahBookmarks);
+            await m.createTable(reflections);
+            await m.createTable(dhikrLogs);
+            await m.createTable(savedDuas);
+            await m.createTable(prayerLogs);
+            await m.createTable(readingLogs);
+          }
+        },
+      );
+
+  /// Calendar-day key used by every per-day table (local midnight).
+  static DateTime dayKey(DateTime d) => DateTime(d.year, d.month, d.day);
 
   Stream<QuranProgressEntry?> watchLatestQuranProgress() {
     final query = select(quranProgressEntries)

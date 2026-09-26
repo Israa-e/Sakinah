@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -21,7 +23,6 @@ Future<void> main() async {
   final container = ProviderContainer(
     overrides: [sharedPreferencesProvider.overrideWithValue(sharedPreferences)],
   );
-  await container.read(notificationServiceProvider).initialize();
 
   runApp(
     UncontrolledProviderScope(
@@ -29,4 +30,9 @@ Future<void> main() async {
       child: const SakinahApp(),
     ),
   );
+
+  // Doesn't gate the first frame — the notification plugin only needs to be
+  // ready by the time PrayerNotificationScheduler tries to use it, which is
+  // well after startup.
+  unawaited(container.read(notificationServiceProvider).initialize());
 }

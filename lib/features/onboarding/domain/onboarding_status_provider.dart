@@ -16,4 +16,11 @@ class OnboardingStatus extends _$OnboardingStatus {
     await ref.read(preferencesServiceProvider).setOnboardingComplete(true);
     state = true;
   }
+
+  /// Marks onboarding as not done so the next navigation to the onboarding
+  /// route is allowed by the router. Collected preferences are left intact.
+  Future<void> reset() async {
+    await ref.read(preferencesServiceProvider).setOnboardingComplete(false);
+    state = false;
+  }
 }

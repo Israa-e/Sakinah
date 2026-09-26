@@ -1,30 +1,23 @@
 {
   "@@locale": "en",
-
   "appName": "Sakīnah",
   "appTagline": "A calmer way to live your faith.",
-
   "getStarted": "Get Started",
   "continueLabel": "Continue",
   "back": "Back",
   "skip": "Skip",
   "maybeLater": "Maybe Later",
   "retry": "Retry",
-
   "onboardingLanguageTitle": "Choose your language",
   "languageArabic": "العربية",
   "languageEnglish": "English",
-
   "onboardingLocationTitle": "Allow location to calculate accurate prayer times and Qibla.",
   "allowLocation": "Allow Location",
-
   "onboardingPrayerPrefsTitle": "Prayer preferences",
   "calculationMethodLabel": "Calculation method",
   "madhabLabel": "Madhab",
-
   "onboardingNotificationsTitle": "Stay gently connected to your daily prayers and adhkar.",
   "allowNotifications": "Allow Notifications",
-
   "onboardingGoalsTitle": "What would you like to focus on?",
   "onboardingGoalsSubtitle": "Choose as many as you like — you can change these later.",
   "goalQuran": "Quran",
@@ -34,35 +27,37 @@
   "goalMemorization": "Memorization",
   "goalConsistency": "Consistency",
   "beginJourney": "Begin",
-
   "navHome": "Home",
   "navQuran": "Quran",
   "navDhikr": "Dhikr",
   "navJourney": "Journey",
   "navProfile": "Profile",
-
   "homeGreeting": "Assalamu Alaikum",
   "dailyIntentionTitle": "Today's intention",
   "dailyIntentionText": "Take a few minutes to reconnect with Allah today.",
   "begin": "Begin",
-
   "yourQuran": "Your Quran",
   "continueReading": "Continue reading",
   "ayahLabel": "Ayah {number}",
   "@ayahLabel": {
-    "placeholders": { "number": { "type": "int" } }
+    "placeholders": {
+      "number": {
+        "type": "int"
+      }
+    }
   },
-
   "todaysDhikr": "Today's Dhikr",
   "start": "Start",
-
   "dailyDeedTitle": "A small good deed",
   "markAsDone": "Mark as done",
   "markedAsDone": "Done for today",
-
   "prayerCountdown": "in {time}",
   "@prayerCountdown": {
-    "placeholders": { "time": { "type": "String" } }
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
   },
   "prayerEstimatedNotice": "Estimated — will sync with your location soon",
   "prayerFajr": "Fajr",
@@ -70,24 +65,958 @@
   "prayerAsr": "Asr",
   "prayerMaghrib": "Maghrib",
   "prayerIsha": "Isha",
-
   "offlineNotice": "You're offline — showing your saved data.",
   "errorGeneric": "Something went wrong. Please try again.",
-
   "comingSoonTitle": "Coming soon",
   "comingSoonBody": "This part of Sakīnah is still being built with care.",
-
   "prayerScreenTitle": "Prayer",
   "prayerSettingsTitle": "Prayer preferences",
   "prayerNotificationsLabel": "Prayer notifications",
   "prayerNotificationsSubtitle": "Get a gentle reminder when each prayer time begins.",
   "qiblaButton": "Qibla direction",
-
   "qiblaTitle": "Qibla",
   "qiblaFacingIt": "You're facing the Qibla",
   "qiblaCalibrateHint": "Move your phone in a figure-eight to calibrate the compass",
   "qiblaPermissionDenied": "Location access is needed to find the Qibla direction.",
   "qiblaLocationUnavailable": "Couldn't determine your location. Check your connection and try again.",
   "qiblaSensorUnavailable": "This device doesn't have a compass sensor.",
-  "openSettings": "Open Settings"
+  "openSettings": "Open Settings",
+  "quranTitle": "The Noble Quran",
+  "quranSearchHint": "Search surah by name or number",
+  "quranNoSearchResults": "No surah matches “{query}”",
+  "@quranNoSearchResults": {
+    "placeholders": {
+      "query": {
+        "type": "String"
+      }
+    }
+  },
+  "quranSurahsHeader": "Surahs",
+  "quranStartReadingTitle": "Begin your reading",
+  "quranStartReadingBody": "Open Al-Fatihah and your place will be kept here.",
+  "quranProgressAyahOf": "Ayah {ayah} of {total}",
+  "@quranProgressAyahOf": {
+    "placeholders": {
+      "ayah": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "quranAyahCount": "{count} ayahs",
+  "@quranAyahCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "quranMeccan": "Meccan",
+  "quranMedinan": "Medinan",
+  "quranBookmarksTitle": "Bookmarks",
+  "quranBookmarksCount": "{count} saved ayahs",
+  "@quranBookmarksCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "quranBookmarksEmptyTitle": "No bookmarks yet",
+  "quranBookmarksEmptyBody": "Tap the bookmark on any ayah to keep it here.",
+  "quranRemoveBookmark": "Remove",
+  "quranJuzAyahRange": "Juz {juz} • Ayah {from}–{to}",
+  "@quranJuzAyahRange": {
+    "placeholders": {
+      "juz": {
+        "type": "int"
+      },
+      "from": {
+        "type": "int"
+      },
+      "to": {
+        "type": "int"
+      }
+    }
+  },
+  "quranModeRead": "Read",
+  "quranModeTranslation": "Translation",
+  "quranModeTafsir": "Tafsir",
+  "quranTafsirUnavailableTitle": "Tafsir isn't available yet",
+  "quranTafsirUnavailableBody": "We only show commentary from a licensed, clearly attributed source. Until one is added, read the translation or consult a trusted scholar.",
+  "quranAyahSelected": "Ayah {number} • Selected",
+  "@quranAyahSelected": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      }
+    }
+  },
+  "quranSurahCitation": "Surah {name} {reference}",
+  "@quranSurahCitation": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "reference": {
+        "type": "String"
+      }
+    }
+  },
+  "quranReflectionPromptTitle": "Reflection focus",
+  "quranReflectionPromptBody": "Sit with this ayah for a moment. What is it inviting you to notice today?",
+  "quranActionListen": "Listen",
+  "quranActionBookmark": "Bookmark",
+  "quranActionBookmarked": "Saved",
+  "quranActionReflect": "Reflect",
+  "quranActionShare": "Share",
+  "quranActionCopy": "Copy",
+  "quranCopied": "Ayah copied to clipboard",
+  "quranShareCopied": "Ayah copied — paste it anywhere to share",
+  "quranBookmarkAdded": "Ayah bookmarked",
+  "quranBookmarkRemoved": "Bookmark removed",
+  "quranReciterName": "Mishary Rashid Alafasy",
+  "quranAudioUnavailable": "Recitation couldn't be played right now",
+  "quranPlayRecitation": "Play recitation",
+  "quranPause": "Pause",
+  "quranPlay": "Play",
+  "quranPreviousAyah": "Previous ayah",
+  "quranNextAyah": "Next ayah",
+  "quranStopRecitation": "Stop recitation",
+  "quranTextSize": "Text size",
+  "quranTextSizeReset": "Reset",
+  "quranReflectTitle": "Reflect on this ayah",
+  "quranReflectHint": "Write what this ayah stirs in your heart…",
+  "quranReflectSave": "Save reflection",
+  "quranReflectionSaved": "Reflection saved",
+  "quranLoadError": "We couldn't load this surah. Please try again.",
+  "quranOfflineNotCached": "You're offline and this surah isn't saved yet. Connect once and it will be kept for offline reading.",
+  "quranSurahNotFound": "This surah could not be found.",
+  "quranTranslatorLabel": "Sahih International",
+  "journeyEyebrow": "Spiritual sanctuary",
+  "journeyTitle": "Your Journey",
+  "journeyGardenName": "بُسْتَانُ السَّكِينَةِ",
+  "journeyLevel": "Level {level}",
+  "@journeyLevel": {
+    "placeholders": {
+      "level": {
+        "type": "int"
+      }
+    }
+  },
+  "journeyXpProgress": "{current} / {target} XP",
+  "@journeyXpProgress": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "target": {
+        "type": "int"
+      }
+    }
+  },
+  "journeyLevelCaption": "Growing with consistency",
+  "journeyStreakDays": "{count, plural, =0{Your garden awaits} =1{1 day of consistency} other{{count} days of consistency}}",
+  "@journeyStreakDays": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "journeyStageSeed": "Seed",
+  "journeyStageSprout": "Sprout",
+  "journeyStageSapling": "Sapling",
+  "journeyStageBlooming": "Blooming",
+  "journeyStageFlourishing": "Flourishing tree",
+  "journeyStageMessageSeed": "Every garden begins with a single seed. One small act today plants yours.",
+  "journeyStageMessageSprout": "Your first roots are taking hold. Gentle steps, kept up, go a long way.",
+  "journeyStageMessageSapling": "Steady and growing. Your small daily moments are adding up.",
+  "journeyStageMessageBlooming": "Your garden is blooming. Keep tending it, one calm day at a time.",
+  "journeyStageMessageFlourishing": "A flourishing tree, rooted in steady days. Rest in its shade and keep tending it.",
+  "journeyStageProgress": "{current} → {next}",
+  "@journeyStageProgress": {
+    "placeholders": {
+      "current": {
+        "type": "String"
+      },
+      "next": {
+        "type": "String"
+      }
+    }
+  },
+  "journeyNextInDays": "{count, plural, =1{Next in 1 day} other{Next in {count} days}}",
+  "@journeyNextInDays": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "journeyStageMax": "Fully grown",
+  "journeyStreakTitle": "Current streak",
+  "journeyDaysUnit": "{count, plural, =1{day} other{days}}",
+  "@journeyDaysUnit": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "journeyBestStreak": "Best: {count}",
+  "@journeyBestStreak": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "journeyStreakOpenToday": "Today is still open — any small act keeps it going.",
+  "journeyStreakTendedToday": "Today is tended. Well done.",
+  "journeyStreakStart": "Begin today — a prayer, an ayah or a dhikr counts.",
+  "journeyLevelCardTitle": "Growth level",
+  "journeyXpToNext": "{xp} XP to next level",
+  "@journeyXpToNext": {
+    "placeholders": {
+      "xp": {
+        "type": "int"
+      }
+    }
+  },
+  "journeyXpNote": "XP is just a gentle mirror of your consistency — not a measure of reward.",
+  "journeyWeekTitle": "Last 7 days",
+  "journeyActiveDays": "{count} / 7 active days",
+  "@journeyActiveDays": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "journeyDeedsThisWeek": "{count, plural, =0{No daily deeds completed yet} =1{1 daily deed completed} other{{count} daily deeds completed}}",
+  "@journeyDeedsThisWeek": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "journeyHabitsTitle": "Weekly habits",
+  "journeyHabitReflection": "Reflection",
+  "journeyHabitDays": "{count} / 7 days",
+  "@journeyHabitDays": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "journeyAyahsTotal": "{count, plural, =1{1 ayah} other{{count} ayahs}}",
+  "@journeyAyahsTotal": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "journeyPrayersTotal": "{count, plural, =1{1 prayer} other{{count} prayers}}",
+  "@journeyPrayersTotal": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "journeyDhikrTotal": "{count, plural, =1{1 dhikr} other{{count} dhikr}}",
+  "@journeyDhikrTotal": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "journeyReflectionsTotal": "{count, plural, =1{1 reflection} other{{count} reflections}}",
+  "@journeyReflectionsTotal": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "journeyGoalsTitle": "Your intentions",
+  "journeyGoalsDefaultHint": "You haven't chosen focus areas yet — here are gentle places to begin.",
+  "journeyGoalPrayerProgress": "{count} / 5 prayers today",
+  "@journeyGoalPrayerProgress": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "journeyGoalQuranProgress": "{count, plural, =0{No ayahs read yet today} =1{1 ayah read today} other{{count} ayahs read today}}",
+  "@journeyGoalQuranProgress": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "journeyGoalDhikrProgress": "{count, plural, =0{No dhikr yet today} =1{1 dhikr today} other{{count} dhikr today}}",
+  "@journeyGoalDhikrProgress": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "journeyGoalConsistencyProgress": "{count, plural, =0{Begin your streak today} =1{1-day streak} other{{count}-day streak}}",
+  "@journeyGoalConsistencyProgress": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "journeyGoalDuaHint": "Explore du'as for today",
+  "journeyGoalMemorizationHint": "Continue in the Quran reader",
+  "journeyGoalDoneToday": "Done today",
+  "journeyMilestonesTitle": "Milestones",
+  "journeyMilestonesCount": "{done} of {total} reached",
+  "@journeyMilestonesCount": {
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "journeyMilestoneFirstStep": "First step",
+  "journeyMilestoneFirstReflection": "First reflection",
+  "journeyMilestoneFivePrayers": "All five prayers in a day",
+  "journeyMilestoneAyahs100": "100 ayahs read",
+  "journeyMilestoneStreak7": "7-day streak",
+  "journeyMilestoneStreak30": "30-day streak",
+  "journeyMilestoneLevel5": "Reached level 5",
+  "journeyMilestoneLocked": "Not reached yet",
+  "journeyStartTitle": "Plant your first seed",
+  "journeyStartBody": "Your garden grows from small, steady moments. Choose one to begin.",
+  "journeyActionLogPrayer": "Log a prayer",
+  "journeyActionRead": "Read Quran",
+  "journeyActionDhikr": "Begin dhikr",
+  "journeyActionReflect": "Write today's reflection",
+  "journeyError": "We couldn't load your journey.",
+  "dhikrBrandSubtitle": "سكينة • طمأنينة",
+  "dhikrProfileTooltip": "Profile",
+  "dhikrEyebrow": "Mindful remembrance",
+  "dhikrTitle": "Dhikr & Sanctuary",
+  "dhikrTitleArabic": "الأذكار والسكينة",
+  "dhikrTabCounter": "Tasbeeh Counter",
+  "dhikrTabGarden": "Garden Journey",
+  "dhikrCategoryAll": "All",
+  "dhikrCategoryAfterPrayer": "After Prayer",
+  "dhikrCategoryMorning": "Morning Adhkar",
+  "dhikrCategoryEvening": "Evening Adhkar",
+  "dhikrCategoryAnytime": "Anytime",
+  "dhikrCompletedOf": "{completed} of {total} completed",
+  "@dhikrCompletedOf": {
+    "placeholders": {
+      "completed": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "dhikrCurrentCycle": "Current cycle",
+  "dhikrAllDoneToday": "All completed today — may Allah accept",
+  "dhikrTimes": "{count} times",
+  "@dhikrTimes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dhikrTodayProgress": "Today {count} / {target}",
+  "@dhikrTodayProgress": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "target": {
+        "type": "int"
+      }
+    }
+  },
+  "dhikrSource": "Source: {source}",
+  "@dhikrSource": {
+    "placeholders": {
+      "source": {
+        "type": "String"
+      }
+    }
+  },
+  "dhikrSectionTitle": "Adhkar Sanctuary",
+  "dhikrAuthenticBadge": "Sourced from hadith",
+  "dhikrDone": "Done",
+  "dhikrGoal": "Goal",
+  "dhikrTapToCount": "Tap to count",
+  "dhikrCounterSemantics": "Tap to count. {count} of {target}",
+  "@dhikrCounterSemantics": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "target": {
+        "type": "int"
+      }
+    }
+  },
+  "dhikrReset": "Reset",
+  "dhikrResetConfirmTitle": "Reset today's count?",
+  "dhikrResetConfirmBody": "Today's count for this dhikr will go back to zero.",
+  "dhikrCancel": "Cancel",
+  "dhikrUndo": "Undo",
+  "dhikrHapticsOn": "Gentle",
+  "dhikrHapticsOff": "Mute",
+  "dhikrHapticsTooltip": "Haptic feedback",
+  "dhikrTargetTooltip": "Change target",
+  "dhikrTargetReached": "Target reached — may Allah accept. You may keep going.",
+  "dhikrNext": "Next: {name}",
+  "@dhikrNext": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "dhikrSetComplete": "Set complete — may Allah accept",
+  "dhikrBackToList": "Back to adhkar",
+  "dhikrNotFound": "This dhikr could not be found.",
+  "dhikrGardenEyebrow": "Today's remembrance",
+  "dhikrGardenTitle": "Your garden grows with every dhikr",
+  "dhikrTodayCountLabel": "Dhikr today",
+  "dhikrCompletedLabel": "Completed",
+  "dhikrWeekTitle": "This week",
+  "dhikrDaysActive": "{count} of 7 days",
+  "@dhikrDaysActive": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dhikrOpenGarden": "Open your garden",
+  "duasLibraryTitle": "Du'as Sanctuary",
+  "duasLibrarySubtitle": "Authentic supplications from the Quran",
+  "duasSearchHint": "Search by need or feeling",
+  "duasClearSearch": "Clear search",
+  "duasCategoryAll": "All",
+  "duasCategoryForgiveness": "Forgiveness",
+  "duasCategoryPatience": "Patience",
+  "duasCategoryGuidance": "Guidance",
+  "duasCategoryFamily": "Family",
+  "duasCategoryKnowledge": "Knowledge",
+  "duasCategoryHardship": "Hardship & relief",
+  "duasCategoryGratitude": "Gratitude",
+  "duasShowSaved": "Show saved du'as",
+  "duasShowAll": "Show all du'as",
+  "duasSavedTitle": "Saved du'as",
+  "duasFeaturedLabel": "Daily featured",
+  "duasQuranSectionTitle": "Du'as from the Quran",
+  "duasQuranSectionSubtitle": "Supplications of the prophets and the believers",
+  "duasCount": "{count, plural, =1{1 du'a} other{{count} du'as}}",
+  "@duasCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "duasNoResultsTitle": "No du'as found",
+  "duasNoResultsMessage": "Try another word or category.",
+  "duasNoSavedTitle": "No saved du'as yet",
+  "duasNoSavedMessage": "Tap the bookmark on any du'a to keep it here.",
+  "duasSave": "Save",
+  "duasSaved": "Saved",
+  "duasSaveTooltip": "Save du'a",
+  "duasUnsaveTooltip": "Remove from saved",
+  "duasCopy": "Copy",
+  "duasCopied": "Du'a copied",
+  "duasTranslationBy": "Translation: {translator}",
+  "@duasTranslationBy": {
+    "placeholders": {
+      "translator": {
+        "type": "String"
+      }
+    }
+  },
+  "duasQuranReference": "Quran {verse}",
+  "@duasQuranReference": {
+    "placeholders": {
+      "verse": {
+        "type": "String"
+      }
+    }
+  },
+  "duasOpenInQuran": "Open in Quran",
+  "duasReciteTitle": "Recite",
+  "duasReciteHint": "Tap to count your recitations",
+  "duasReciteCountSemantics": "Recited {count} times",
+  "@duasReciteCountSemantics": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "duasReciteReset": "Reset",
+  "duasLoadError": "Couldn't load the du'a library.",
+  "duasNotFound": "This du'a couldn't be found.",
+  "duasDhikrCardEyebrow": "A moment of stillness",
+  "duasDhikrCardTitle": "Quiet dhikr & istighfar",
+  "duasDhikrCardBody": "Set aside a few minutes for remembrance and a calm heart.",
+  "duasDhikrCardAction": "Open dhikr",
+  "askTitle": "Ask Sakīnah",
+  "askSubtitle": "A companion grounded in verified sources",
+  "askTopBarSubtitle": "Verified companion & sanctuary",
+  "askKnowledgeEyebrow": "Knowledge sanctuary",
+  "askVerifiedSources": "Verified sources",
+  "askInputHint": "Ask about the Quran, du'as and worship…",
+  "askSend": "Send question",
+  "askSuggestedTitle": "Suggested questions",
+  "askSuggestionAnxiety": "Du'a for anxiety and peace",
+  "askSuggestionAyah": "What does Ayah 2:143 mean?",
+  "askSuggestionFasting": "Etiquette of fasting",
+  "askDisclaimer": "For learning purposes. For personal religious rulings, consult a qualified scholar.",
+  "askYou": "You",
+  "askAnswerTitle": "Sakīnah's answer",
+  "askAnswerSubtitle": "Grounded in the sources below",
+  "askSourcesTitle": "Sources",
+  "askSourceQuran": "Quran {reference}",
+  "@askSourceQuran": {
+    "placeholders": {
+      "reference": {
+        "type": "String"
+      }
+    }
+  },
+  "askSourceHadith": "Hadith · {reference}",
+  "@askSourceHadith": {
+    "placeholders": {
+      "reference": {
+        "type": "String"
+      }
+    }
+  },
+  "askNoSources": "No sources were returned with this answer — please treat it with caution.",
+  "askThinking": "Searching verified sources…",
+  "askUnavailableTitle": "Ask Sakīnah isn't available yet",
+  "askUnavailableMessage": "We're preparing a service that answers only from verified Quran and hadith sources. Until it's ready, you can explore the du'a library.",
+  "askBrowseDuas": "Browse du'as",
+  "askErrorOffline": "You're offline. Connect to the internet and try again.",
+  "askErrorTimeout": "The answer took too long. Please try again.",
+  "askErrorServer": "Something went wrong on our side. Please try again.",
+  "askErrorGeneric": "Couldn't get an answer. Please try again.",
+  "askExploreDuasTitle": "Explore du'as",
+  "askCollections": "{count} collections",
+  "@askCollections": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "askFeaturedDuaLabel": "Featured daily du'a",
+  "askViewLibrary": "View library",
+  "onboardingWelcomeBadge": "Sanctuary of serenity",
+  "onboardingWelcomeWordmark": "سَكِينَة",
+  "onboardingWelcomeFootnote": "Setup takes about a minute",
+  "onboardingStepOf": "Step {current} of {total}",
+  "@onboardingStepOf": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "onboardingSkipSetup": "Skip setup",
+  "onboardingLanguageBadge": "Language",
+  "onboardingLanguageSubtitle": "Select your preferred language. You can change this anytime from your profile.",
+  "onboardingLanguageEnglishDesc": "English interface and translations",
+  "onboardingLanguageArabicDesc": "Full Arabic interface, right to left",
+  "onboardingLanguageNote": "Quran verses are always shown in their original Arabic script, whichever language you choose.",
+  "onboardingLocationHeadline": "Accurate prayer times & Qibla",
+  "onboardingLocationAutoTitle": "Automatic precision",
+  "onboardingLocationAutoBody": "Uses your location to calculate local prayer times and the Qibla direction.",
+  "onboardingRecommended": "Recommended",
+  "onboardingLocationPrivacy": "Privacy first: your coordinates stay on your device and are never shared.",
+  "onboardingLocationGranted": "Location enabled — prayer times will follow where you are.",
+  "onboardingLocationDenied": "Location is off. Prayer times will be approximate until you allow it in system settings.",
+  "onboardingSettingsHint": "You can change this anytime from your profile.",
+  "onboardingPrayerPrefsSubtitle": "Choose the method your local mosque follows. If you're unsure, the default works well for most regions.",
+  "onboardingCalcAuthority": "Calculation authority",
+  "onboardingMethodAngles": "Fajr {fajr}°, Isha {isha}°",
+  "@onboardingMethodAngles": {
+    "placeholders": {
+      "fajr": {
+        "type": "String"
+      },
+      "isha": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingMethodAnglesInterval": "Fajr {fajr}°, Isha {minutes} min after Maghrib",
+  "@onboardingMethodAnglesInterval": {
+    "placeholders": {
+      "fajr": {
+        "type": "String"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "onboardingMethodMwl": "Muslim World League",
+  "onboardingMethodEgyptian": "Egyptian General Authority of Survey",
+  "onboardingMethodKarachi": "University of Islamic Sciences, Karachi",
+  "onboardingMethodUmmAlQura": "Umm al-Qura University, Makkah",
+  "onboardingMethodIsna": "Islamic Society of North America (ISNA)",
+  "onboardingMethodGulf": "Gulf Region",
+  "onboardingMethodSingapore": "Singapore",
+  "onboardingMethodTurkiye": "Türkiye (Diyanet)",
+  "onboardingMethodMoonsighting": "Moonsighting Committee",
+  "onboardingMadhabSection": "Asr calculation (madhab)",
+  "onboardingMadhabStandard": "Standard",
+  "onboardingMadhabStandardSchools": "Shafi'i, Maliki, Hanbali",
+  "onboardingMadhabStandardDesc": "Asr begins when a shadow equals the object's length",
+  "onboardingMadhabHanafi": "Hanafi",
+  "onboardingMadhabHanafiSchools": "Later Asr",
+  "onboardingMadhabHanafiDesc": "Asr begins when a shadow is twice the object's length",
+  "onboardingConfirmContinue": "Confirm & continue",
+  "onboardingNotificationsHeadline": "Peaceful reminders",
+  "onboardingNotifPrayerTitle": "Prayer time reminders",
+  "onboardingNotifPrayerBody": "A quiet notification as each of the five daily prayers begins.",
+  "onboardingNotifReassurance": "No spam, no promotions — only prayer times.",
+  "onboardingNotifEnable": "Enable gentle notifications",
+  "onboardingDecideLater": "Decide later",
+  "onboardingNotifGranted": "Reminders are on.",
+  "onboardingNotifDenied": "Notifications are blocked. You can allow them later in system settings.",
+  "onboardingGoalQuranTitle": "Daily Quran recitation",
+  "onboardingGoalPrayerTitle": "Salah on time",
+  "onboardingGoalDhikrTitle": "Morning & evening dhikr",
+  "onboardingGoalDuaTitle": "Reflections & du'a",
+  "onboardingGoalConsistencyTitle": "Spiritual habit garden",
+  "onboardingGoalMemorizationTitle": "Quran memorization",
+  "onboardingNameLabel": "What should we call you?",
+  "onboardingNameHint": "Your name (optional)",
+  "onboardingGoalsTip": "Your choices only shape suggestions — nothing is locked in.",
+  "onboardingComplete": "Complete setup",
+  "profileHeaderSubtitle": "Your sanctuary settings",
+  "profileAddName": "Add your name",
+  "profileEditName": "Edit name",
+  "profileNameDialogTitle": "Your name",
+  "profileSave": "Save",
+  "profileCancel": "Cancel",
+  "profileDelete": "Delete",
+  "profileSectionPrayer": "Prayer",
+  "profileNotifications": "Prayer reminders",
+  "profileNotificationsBody": "Notify me when each prayer begins",
+  "profileNotificationsDenied": "Notifications are blocked in system settings.",
+  "profileRefreshLocation": "Refresh location",
+  "profileRefreshLocationBody": "Update prayer times for where you are now",
+  "profileLocationUpdated": "Location updated — prayer times refreshed.",
+  "profileLocationDenied": "Location permission is off.",
+  "profileLocationFailed": "Couldn't get your location. Check that location services are on and try again.",
+  "profileSectionAppearance": "Appearance",
+  "profileTheme": "Theme",
+  "profileThemeSystem": "System",
+  "profileThemeLight": "Light",
+  "profileThemeDark": "Dark",
+  "profileLanguage": "Language",
+  "profileSectionQuran": "Quran",
+  "profileTranslation": "English translation",
+  "profileTranslationValue": "Sahih International",
+  "profileSectionContent": "Content & sources",
+  "profileSources": "Where our content comes from",
+  "profileSourcesBody": "All Quran text (Uthmani script) and its English translation (Sahih International) are retrieved from api.alquran.cloud. Every du'a and dhikr is shown with its source reference — a Quran verse or a named hadith collection and number. Nothing religious is paraphrased or generated.",
+  "profileSectionExplore": "Explore",
+  "profileDuasLibrary": "Du'as library",
+  "profileAskSakinah": "Ask Sakīnah",
+  "profileReflections": "My reflections",
+  "profileSectionAbout": "About",
+  "profileAbout": "About Sakīnah",
+  "profileVersion": "Version {version}",
+  "@profileVersion": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "profileResetOnboarding": "Reset onboarding",
+  "profileResetOnboardingBody": "Run the welcome setup again. Your data stays.",
+  "profileResetConfirmTitle": "Reset onboarding?",
+  "profileResetConfirmBody": "You'll go through the welcome steps again. Your reflections, progress and saved items are kept.",
+  "profileResetConfirm": "Reset",
+  "profileReflectionsEmptyTitle": "No reflections yet",
+  "profileReflectionsEmptyBody": "Reflections you write while reading the Quran will appear here.",
+  "profileReflectionAyahRef": "Quran {surah}:{ayah}",
+  "@profileReflectionAyahRef": {
+    "placeholders": {
+      "surah": {
+        "type": "int"
+      },
+      "ayah": {
+        "type": "int"
+      }
+    }
+  },
+  "profileReflectionSurahRef": "Surah {surah}",
+  "@profileReflectionSurahRef": {
+    "placeholders": {
+      "surah": {
+        "type": "int"
+      }
+    }
+  },
+  "profileReflectionDeleteTitle": "Delete this reflection?",
+  "profileReflectionDeleteBody": "This can't be undone.",
+  "profileReflectionDeleted": "Reflection deleted",
+  "homeNotificationsTooltip": "Notifications",
+  "homeNextPrayer": "Next prayer",
+  "homeMidnight": "Midnight",
+  "homeLastThird": "Last third",
+  "homeLocationPending": "Location pending",
+  "homeTimelineHint": "Long-press a prayer that has begun to mark it as prayed.",
+  "homeQuickQibla": "Qibla",
+  "homeQuickDuas": "Du'as",
+  "homeQuickAsk": "Ask Sakīnah",
+  "homeDhikrTarget": "Target: {count}",
+  "@homeDhikrTarget": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "homeDhikrProgress": "{count} of {target} complete",
+  "@homeDhikrProgress": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "target": {
+        "type": "int"
+      }
+    }
+  },
+  "homeQuranSurahName": "Surah {name}",
+  "@homeQuranSurahName": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "homeQuranAyahJuz": "Ayah {ayah} • Juz {juz}",
+  "@homeQuranAyahJuz": {
+    "placeholders": {
+      "ayah": {
+        "type": "int"
+      },
+      "juz": {
+        "type": "int"
+      }
+    }
+  },
+  "homeQuranCompletion": "Surah completion",
+  "homeQuranPercent": "{percent}%",
+  "@homeQuranPercent": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "homeQuranEmptyTitle": "Begin with Al-Fatiha",
+  "homeQuranEmptyBody": "Your reading progress will appear here once you start.",
+  "homeQuranStartReading": "Start reading",
+  "homeVerseSource": "Quran {reference} · Sahih International",
+  "@homeVerseSource": {
+    "placeholders": {
+      "reference": {
+        "type": "String"
+      }
+    }
+  },
+  "prayerQiblaTitle": "Qibla & Prayer",
+  "prayerTabTimes": "Prayer Times",
+  "prayerTabQibla": "Qibla",
+  "prayerNextPrayer": "Next prayer",
+  "prayerTodaysSchedule": "Today's schedule",
+  "prayerSunrise": "Sunrise",
+  "prayerMarkPrayed": "Mark {prayer} as prayed",
+  "@prayerMarkPrayed": {
+    "placeholders": {
+      "prayer": {
+        "type": "String"
+      }
+    }
+  },
+  "prayerUnmarkPrayed": "Unmark {prayer}",
+  "@prayerUnmarkPrayed": {
+    "placeholders": {
+      "prayer": {
+        "type": "String"
+      }
+    }
+  },
+  "prayerNotYetTime": "Not yet time",
+  "prayerLoggedCount": "{count} of 5 prayers logged today",
+  "@prayerLoggedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "prayerCurrentLocation": "Current location",
+  "prayerMadhabHanafi": "Hanafi",
+  "prayerMadhabShafi": "Shafi'i, Maliki & Hanbali",
+  "prayerChangeSettings": "Change",
+  "prayerMoreSettings": "More settings in Profile",
+  "qiblaTurnRight": "Turn {degrees}° to the right",
+  "@qiblaTurnRight": {
+    "placeholders": {
+      "degrees": {
+        "type": "int"
+      }
+    }
+  },
+  "qiblaTurnLeft": "Turn {degrees}° to the left",
+  "@qiblaTurnLeft": {
+    "placeholders": {
+      "degrees": {
+        "type": "int"
+      }
+    }
+  },
+  "qiblaBearing": "Qibla bearing: {degrees}°",
+  "@qiblaBearing": {
+    "placeholders": {
+      "degrees": {
+        "type": "String"
+      }
+    }
+  },
+  "qiblaDistance": "{km} km to Makkah",
+  "@qiblaDistance": {
+    "placeholders": {
+      "km": {
+        "type": "String"
+      }
+    }
+  },
+  "qiblaWaitingForCompass": "Waiting for the compass…",
+  "qiblaVerseSource": "Quran {reference} · Sahih International",
+  "@qiblaVerseSource": {
+    "placeholders": {
+      "reference": {
+        "type": "String"
+      }
+    }
+  },
+  "qiblaDirN": "N",
+  "qiblaDirNE": "NE",
+  "qiblaDirE": "E",
+  "qiblaDirSE": "SE",
+  "qiblaDirS": "S",
+  "qiblaDirSW": "SW",
+  "qiblaDirW": "W",
+  "qiblaDirNW": "NW",
+  "quranJuzAyah": "Juz {juz} • Ayah {ayah}",
+  "@quranJuzAyah": {
+    "placeholders": {
+      "juz": {
+        "type": "int"
+      },
+      "ayah": {
+        "type": "int"
+      }
+    }
+  },
+  "homeGreetingNamed": "Assalamu Alaikum, {name}",
+  "@homeGreetingNamed": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "quranMenuTafseer": "Tafseer",
+  "quranMenuTranslate": "Translate",
+  "quranMenuListen": "Listen to verses",
+  "quranMenuAddFavorite": "Add to Favorites",
+  "quranMenuRemoveFavorite": "Remove from Favorites",
+  "quranTafsirSourceName": "Tafsir al-Muyassar — King Fahd Quran Complex",
+  "quranTafsirLoadError": "We couldn't load the tafseer. Check your connection and try again.",
+  "quranTranslationBy": "Translation: {name}",
+  "@quranTranslationBy": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "quranMushafDisplay": "Mushaf display",
+  "quranDisplayHorizontal": "Horizontal",
+  "quranDisplayVertical": "Vertical",
+  "quranIndexTitle": "The index",
+  "quranSearchTitle": "Search",
+  "quranAudios": "Audios",
+  "quranNightMode": "Night mode",
+  "quranColorYourMushaf": "Color your mushaf",
+  "quranReferenceMarks": "Reference marks",
+  "quranFeaturesSection": "Features",
+  "quranFavoriteSection": "Favorite",
+  "quranColorSand": "Sand",
+  "quranColorBlue": "Blue",
+  "quranColorGreen": "Green",
+  "quranJuzLabel": "Juz {juz}",
+  "@quranJuzLabel": {
+    "placeholders": {
+      "juz": {
+        "type": "int"
+      }
+    }
+  },
+  "quranPageLabel": "Page {page}",
+  "@quranPageLabel": {
+    "placeholders": {
+      "page": {
+        "type": "int"
+      }
+    }
+  },
+  "quranQuickNavigation": "Quick navigation",
+  "quranNextPage": "Next page",
+  "quranPreviousPage": "Previous page",
+  "quranReaderMenu": "Mushaf menu",
+  "quranCoachMenu": "Side menu: display, index, search, colours and more",
+  "quranCoachTapAyah": "Tap any ayah for tafseer, translation, recitation and favorites",
+  "quranCoachPinch": "Pinch with two fingers to resize the text",
+  "quranCoachQuickNav": "Tap the page to show quick navigation",
+  "quranCoachGotIt": "Got it",
+  "quranPageNotFound": "This page could not be found.",
+  "quranClose": "Close"
 }

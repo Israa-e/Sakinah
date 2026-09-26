@@ -1,9 +1,11 @@
+import 'package:flutter/cupertino.dart' show CupertinoPageTransitionsBuilder;
 import 'package:flutter/material.dart';
 
 import '../../core/constants/app_radius.dart';
 import '../../core/constants/app_spacing.dart';
 import 'app_colors.dart';
 import 'app_typography.dart';
+import 'sakinah_palette.dart';
 
 /// Assembles Sakīnah's light and dark [ThemeData] from the color palette and
 /// type scale. This is the only place a screen-level `Theme(...)` override
@@ -14,38 +16,57 @@ abstract final class AppTheme {
     const colorScheme = ColorScheme(
       brightness: Brightness.light,
       primary: AppColors.primary,
-      onPrimary: AppColors.white,
-      primaryContainer: AppColors.lightPrimaryContainer,
-      onPrimaryContainer: AppColors.lightOnPrimaryContainer,
+      onPrimary: AppColors.onPrimary,
+      primaryContainer: AppColors.primaryContainer,
+      onPrimaryContainer: AppColors.onPrimaryContainer,
+      primaryFixed: AppColors.primaryFixed,
+      primaryFixedDim: AppColors.primaryFixedDim,
+      onPrimaryFixed: AppColors.onPrimaryFixed,
+      onPrimaryFixedVariant: AppColors.onPrimaryFixedVariant,
       secondary: AppColors.secondary,
-      onSecondary: AppColors.white,
-      secondaryContainer: AppColors.lightSecondaryContainer,
-      onSecondaryContainer: AppColors.lightOnSecondaryContainer,
-      tertiary: AppColors.accent,
-      onTertiary: AppColors.lightOnAccent,
-      tertiaryContainer: AppColors.lightAccentContainer,
-      onTertiaryContainer: AppColors.lightOnAccent,
-      error: AppColors.lightError,
-      onError: AppColors.white,
-      errorContainer: AppColors.lightErrorContainer,
-      onErrorContainer: AppColors.lightOnErrorContainer,
-      surface: AppColors.white,
-      onSurface: AppColors.text,
-      surfaceContainerHighest: AppColors.lightSurfaceAlt,
-      onSurfaceVariant: AppColors.secondary,
-      outline: AppColors.lightOutline,
-      outlineVariant: AppColors.lightOutlineVariant,
+      onSecondary: AppColors.onSecondary,
+      secondaryContainer: AppColors.secondaryContainer,
+      onSecondaryContainer: AppColors.onSecondaryContainer,
+      secondaryFixed: AppColors.secondaryFixed,
+      secondaryFixedDim: AppColors.secondaryFixedDim,
+      onSecondaryFixed: AppColors.onSecondaryFixed,
+      onSecondaryFixedVariant: AppColors.onSecondaryFixedVariant,
+      tertiary: AppColors.tertiary,
+      onTertiary: AppColors.onTertiary,
+      tertiaryContainer: AppColors.tertiaryContainer,
+      onTertiaryContainer: AppColors.onTertiaryContainer,
+      tertiaryFixed: AppColors.tertiaryFixed,
+      tertiaryFixedDim: AppColors.tertiaryFixedDim,
+      onTertiaryFixed: AppColors.onTertiaryFixed,
+      onTertiaryFixedVariant: AppColors.onTertiaryFixedVariant,
+      error: AppColors.error,
+      onError: AppColors.onError,
+      errorContainer: AppColors.errorContainer,
+      onErrorContainer: AppColors.onErrorContainer,
+      surface: AppColors.surface,
+      onSurface: AppColors.onSurface,
+      surfaceDim: AppColors.surfaceDim,
+      surfaceBright: AppColors.surfaceBright,
+      surfaceContainerLowest: AppColors.surfaceContainerLowest,
+      surfaceContainerLow: AppColors.surfaceContainerLow,
+      surfaceContainer: AppColors.surfaceContainer,
+      surfaceContainerHigh: AppColors.surfaceContainerHigh,
+      surfaceContainerHighest: AppColors.surfaceContainerHighest,
+      onSurfaceVariant: AppColors.onSurfaceVariant,
+      outline: AppColors.outline,
+      outlineVariant: AppColors.outlineVariant,
       shadow: Colors.black,
       scrim: Colors.black,
-      inverseSurface: AppColors.darkSurface,
-      onInverseSurface: AppColors.darkText,
-      inversePrimary: AppColors.darkPrimary,
+      inverseSurface: AppColors.inverseSurface,
+      onInverseSurface: AppColors.inverseOnSurface,
+      inversePrimary: AppColors.inversePrimary,
+      surfaceTint: AppColors.surfaceTint,
     );
 
     return _build(
       colorScheme: colorScheme,
-      scaffoldBackground: AppColors.background,
-      cardColor: AppColors.white,
+      palette: SakinahPalette.light,
+      cardColor: AppColors.surfaceContainerLowest,
       languageCode: languageCode,
     );
   }
@@ -57,45 +78,66 @@ abstract final class AppTheme {
       onPrimary: AppColors.darkOnPrimary,
       primaryContainer: AppColors.darkPrimaryContainer,
       onPrimaryContainer: AppColors.darkOnPrimaryContainer,
+      primaryFixed: AppColors.primaryFixed,
+      primaryFixedDim: AppColors.primaryFixedDim,
+      onPrimaryFixed: AppColors.onPrimaryFixed,
+      onPrimaryFixedVariant: AppColors.onPrimaryFixedVariant,
       secondary: AppColors.darkSecondary,
       onSecondary: AppColors.darkOnSecondary,
       secondaryContainer: AppColors.darkSecondaryContainer,
       onSecondaryContainer: AppColors.darkOnSecondaryContainer,
-      tertiary: AppColors.darkAccent,
-      onTertiary: AppColors.darkOnAccent,
-      tertiaryContainer: AppColors.darkAccentContainer,
-      onTertiaryContainer: AppColors.darkOnAccentContainer,
+      secondaryFixed: AppColors.secondaryFixed,
+      secondaryFixedDim: AppColors.secondaryFixedDim,
+      onSecondaryFixed: AppColors.onSecondaryFixed,
+      onSecondaryFixedVariant: AppColors.onSecondaryFixedVariant,
+      tertiary: AppColors.darkTertiary,
+      onTertiary: AppColors.darkOnTertiary,
+      tertiaryContainer: AppColors.darkTertiaryContainer,
+      onTertiaryContainer: AppColors.darkOnTertiaryContainer,
+      tertiaryFixed: AppColors.tertiaryFixed,
+      tertiaryFixedDim: AppColors.tertiaryFixedDim,
+      onTertiaryFixed: AppColors.onTertiaryFixed,
+      onTertiaryFixedVariant: AppColors.onTertiaryFixedVariant,
       error: AppColors.darkError,
       onError: AppColors.darkOnError,
       errorContainer: AppColors.darkErrorContainer,
       onErrorContainer: AppColors.darkOnErrorContainer,
       surface: AppColors.darkSurface,
-      onSurface: AppColors.darkText,
-      surfaceContainerHighest: AppColors.darkSurfaceAlt,
-      onSurfaceVariant: AppColors.darkSecondary,
+      onSurface: AppColors.darkOnSurface,
+      surfaceDim: AppColors.darkSurface,
+      surfaceBright: AppColors.darkSurfaceBright,
+      surfaceContainerLowest: AppColors.darkSurfaceContainerLowest,
+      surfaceContainerLow: AppColors.darkSurfaceContainerLow,
+      surfaceContainer: AppColors.darkSurfaceContainer,
+      surfaceContainerHigh: AppColors.darkSurfaceContainerHigh,
+      surfaceContainerHighest: AppColors.darkSurfaceContainerHighest,
+      onSurfaceVariant: AppColors.darkOnSurfaceVariant,
       outline: AppColors.darkOutline,
       outlineVariant: AppColors.darkOutlineVariant,
       shadow: Colors.black,
       scrim: Colors.black,
-      inverseSurface: AppColors.background,
-      onInverseSurface: AppColors.text,
-      inversePrimary: AppColors.primary,
+      inverseSurface: AppColors.surfaceContainerHighest,
+      onInverseSurface: AppColors.inverseSurface,
+      inversePrimary: AppColors.surfaceTint,
+      surfaceTint: AppColors.darkPrimary,
     );
 
     return _build(
       colorScheme: colorScheme,
-      scaffoldBackground: AppColors.darkBackground,
-      cardColor: AppColors.darkSurface,
+      palette: SakinahPalette.dark,
+      // Cards sit one step above the canvas in dark mode.
+      cardColor: AppColors.darkSurfaceContainerLow,
       languageCode: languageCode,
     );
   }
 
   static ThemeData _build({
     required ColorScheme colorScheme,
-    required Color scaffoldBackground,
+    required SakinahPalette palette,
     required Color cardColor,
     required String languageCode,
   }) {
+    final scaffoldBackground = palette.canvas;
     final textTheme = AppTypography.textTheme(
       languageCode: languageCode,
       color: colorScheme.onSurface,
@@ -110,22 +152,25 @@ abstract final class AppTheme {
       fontFamily: languageCode == 'ar' ? AppFonts.arabic : AppFonts.latin,
       visualDensity: VisualDensity.standard,
       splashFactory: InkSparkle.splashFactory,
+      cardColor: cardColor,
       extensions: [
         AppTypographyExtension.build(color: colorScheme.onSurface),
+        palette,
       ],
       appBarTheme: AppBarTheme(
         backgroundColor: scaffoldBackground,
+        scrolledUnderElevation: 0,
         foregroundColor: colorScheme.onSurface,
         surfaceTintColor: Colors.transparent,
         elevation: 0,
         centerTitle: false,
-        titleTextStyle: textTheme.headlineSmall,
+        titleTextStyle: textTheme.titleLarge?.copyWith(color: colorScheme.primary),
       ),
       cardTheme: CardThemeData(
         color: cardColor,
         elevation: 0,
         margin: EdgeInsets.zero,
-        shape: const RoundedRectangleBorder(borderRadius: AppRadius.largeAll),
+        shape: const RoundedRectangleBorder(borderRadius: AppRadius.cardAll),
       ),
       dividerTheme: DividerThemeData(
         color: colorScheme.outlineVariant,
@@ -134,12 +179,12 @@ abstract final class AppTheme {
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          backgroundColor: colorScheme.primary,
-          foregroundColor: colorScheme.onPrimary,
+          backgroundColor: palette.hero,
+          foregroundColor: palette.onHero,
           disabledBackgroundColor: colorScheme.onSurface.withValues(alpha: 0.12),
           textStyle: textTheme.labelLarge,
-          minimumSize: const Size.fromHeight(52),
-          padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xl),
+          minimumSize: const Size.fromHeight(54),
+          padding: const EdgeInsets.symmetric(horizontal: 28),
           shape: const RoundedRectangleBorder(borderRadius: AppRadius.pillAll),
           elevation: 0,
         ),
@@ -147,9 +192,9 @@ abstract final class AppTheme {
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
           foregroundColor: colorScheme.primary,
-          side: BorderSide(color: colorScheme.outline),
+          side: BorderSide(color: AppColors.sage.withValues(alpha: 0.3), width: 1.5),
           textStyle: textTheme.labelLarge,
-          minimumSize: const Size.fromHeight(52),
+          minimumSize: const Size.fromHeight(54),
           padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xl),
           shape: const RoundedRectangleBorder(borderRadius: AppRadius.pillAll),
         ),
@@ -167,42 +212,78 @@ abstract final class AppTheme {
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        fillColor: colorScheme.surfaceContainerHighest,
+        fillColor: AppColors.sage.withValues(alpha: 0.08),
         contentPadding: const EdgeInsets.symmetric(
           horizontal: AppSpacing.md,
           vertical: AppSpacing.sm,
         ),
         border: const OutlineInputBorder(
-          borderRadius: AppRadius.mediumAll,
+          borderRadius: AppRadius.cardAll,
           borderSide: BorderSide.none,
         ),
         enabledBorder: const OutlineInputBorder(
-          borderRadius: AppRadius.mediumAll,
+          borderRadius: AppRadius.cardAll,
           borderSide: BorderSide.none,
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: AppRadius.mediumAll,
+          borderRadius: AppRadius.cardAll,
           borderSide: BorderSide(color: colorScheme.primary, width: 1.5),
         ),
         hintStyle: textTheme.bodyMedium?.copyWith(color: colorScheme.onSurfaceVariant),
       ),
       navigationBarTheme: NavigationBarThemeData(
         backgroundColor: cardColor,
-        indicatorColor: colorScheme.primaryContainer,
+        indicatorColor: colorScheme.secondaryContainer.withValues(alpha: 0.6),
         surfaceTintColor: Colors.transparent,
         labelTextStyle: WidgetStatePropertyAll(textTheme.labelSmall),
       ),
       bottomSheetTheme: BottomSheetThemeData(
         backgroundColor: cardColor,
         surfaceTintColor: Colors.transparent,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(top: Radius.circular(AppRadius.xLarge)),
+        showDragHandle: true,
+        dragHandleColor: colorScheme.outlineVariant,
+        shape: RoundedRectangleBorder(
+          borderRadius: const BorderRadius.vertical(top: Radius.circular(AppRadius.xLarge)),
+          side: BorderSide(color: AppColors.gold.withValues(alpha: 0.15)),
         ),
+      ),
+      chipTheme: ChipThemeData(
+        backgroundColor: colorScheme.surfaceContainerLow,
+        selectedColor: colorScheme.secondaryContainer,
+        side: BorderSide(color: colorScheme.outlineVariant.withValues(alpha: 0.4)),
+        shape: const RoundedRectangleBorder(borderRadius: AppRadius.pillAll),
+        labelStyle: textTheme.labelMedium,
+      ),
+      switchTheme: SwitchThemeData(
+        trackColor: WidgetStateProperty.resolveWith(
+          (states) => states.contains(WidgetState.selected)
+              ? palette.hero
+              : colorScheme.surfaceContainerHighest,
+        ),
+        thumbColor: WidgetStateProperty.resolveWith(
+          (states) => states.contains(WidgetState.selected)
+              ? palette.heroAccent
+              : colorScheme.outline,
+        ),
+        trackOutlineColor: const WidgetStatePropertyAll(Colors.transparent),
+      ),
+      snackBarTheme: SnackBarThemeData(
+        behavior: SnackBarBehavior.floating,
+        backgroundColor: palette.hero,
+        contentTextStyle: textTheme.bodyMedium?.copyWith(color: palette.onHero),
+        shape: const RoundedRectangleBorder(borderRadius: AppRadius.largeAll),
+      ),
+      pageTransitionsTheme: const PageTransitionsTheme(
+        builders: {
+          TargetPlatform.android: FadeForwardsPageTransitionsBuilder(),
+          TargetPlatform.linux: FadeForwardsPageTransitionsBuilder(),
+          TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+        },
       ),
       progressIndicatorTheme: ProgressIndicatorThemeData(
         color: colorScheme.primary,
-        linearTrackColor: colorScheme.surfaceContainerHighest,
-        circularTrackColor: colorScheme.surfaceContainerHighest,
+        linearTrackColor: colorScheme.surfaceContainer,
+        circularTrackColor: colorScheme.surfaceContainer,
       ),
     );
   }

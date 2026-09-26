@@ -1,15 +1,19 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../core/widgets/coming_soon_screen.dart';
+import '../../features/dhikr/presentation/dhikr_routes.dart';
+import '../../features/duas/presentation/duas_routes.dart';
 import '../../features/home/presentation/screens/home_screen.dart';
+import '../../features/journey/presentation/journey_routes.dart';
 import '../../features/onboarding/domain/onboarding_status_provider.dart';
 import '../../features/onboarding/presentation/screens/onboarding_screen.dart';
 import '../../features/prayer/presentation/screens/prayer_screen.dart';
+import '../../features/profile/presentation/profile_routes.dart';
 import '../../features/qibla/presentation/screens/qibla_screen.dart';
+import '../../features/quran/presentation/quran_routes.dart';
 import 'app_shell.dart';
+import 'navigator_keys.dart';
 
 part 'app_router.g.dart';
 
@@ -27,6 +31,7 @@ abstract final class AppRoutes {
 @Riverpod(keepAlive: true)
 GoRouter appRouter(Ref ref) {
   return GoRouter(
+    navigatorKey: rootNavigatorKey,
     initialLocation: AppRoutes.home,
     redirect: (context, state) {
       final onboardingComplete = ref.read(onboardingStatusProvider);
@@ -53,6 +58,7 @@ GoRouter appRouter(Ref ref) {
         path: AppRoutes.qibla,
         builder: (context, state) => const QiblaScreen(),
       ),
+      ...duasRoutes,
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) =>
             AppShell(navigationShell: navigationShell),
@@ -65,41 +71,10 @@ GoRouter appRouter(Ref ref) {
               ),
             ],
           ),
-          StatefulShellBranch(
-            routes: [
-              GoRoute(
-                path: AppRoutes.quran,
-                builder: (context, state) =>
-                    const ComingSoonScreen(icon: Icons.menu_book_outlined),
-              ),
-            ],
-          ),
-          StatefulShellBranch(
-            routes: [
-              GoRoute(
-                path: AppRoutes.dhikr,
-                builder: (context, state) =>
-                    const ComingSoonScreen(icon: Icons.self_improvement_outlined),
-              ),
-            ],
-          ),
-          StatefulShellBranch(
-            routes: [
-              GoRoute(
-                path: AppRoutes.journey,
-                builder: (context, state) => const ComingSoonScreen(icon: Icons.eco_outlined),
-              ),
-            ],
-          ),
-          StatefulShellBranch(
-            routes: [
-              GoRoute(
-                path: AppRoutes.profile,
-                builder: (context, state) =>
-                    const ComingSoonScreen(icon: Icons.person_outline),
-              ),
-            ],
-          ),
+          StatefulShellBranch(routes: quranRoutes),
+          StatefulShellBranch(routes: dhikrRoutes),
+          StatefulShellBranch(routes: journeyRoutes),
+          StatefulShellBranch(routes: profileRoutes),
         ],
       ),
     ],

@@ -15,10 +15,15 @@ import 'static_prayer_repository.dart';
 
 part 'adhan_prayer_repository.g.dart';
 
-/// Real prayer time calculation: device location (fresh, falling back to the
-/// last cached fix) + the user's chosen calculation method/madhab, via
-/// adhan_dart. Falls back to [StaticPrayerRepository] whenever no location —
-/// fresh or cached — is available at all.
+/// Real prayer time calculation: the user's chosen calculation method/madhab
+/// (via adhan_dart) applied to a device location.
+///
+/// A fresh GPS fix (`Geolocator.getCurrentPosition`) can take several
+/// seconds — sometimes close to its own timeout — so this never makes the UI
+/// wait on it. It emits immediately from the last cached location (or the
+/// [StaticPrayerRepository] fallback if there's no cache yet), then silently
+/// emits again once a fresh fix comes back, the same cache-then-refresh
+/// pattern used everywhere else in the app.
 class AdhanPrayerRepository implements PrayerRepository {
   AdhanPrayerRepository({
     required this.locationService,
@@ -32,22 +37,33 @@ class AdhanPrayerRepository implements PrayerRepository {
 
   @override
   Stream<PrayerSchedule> watchTodaySchedule() async* {
-    final coordinates = await _resolveCoordinates();
-    if (coordinates == null) {
+    final cached = preferencesService.lastKnownLocation;
+    if (cached != null) {
+      yield _scheduleFor(GeoCoordinates(latitude: cached.$1, longitude: cached.$2));
+    } else {
       yield* StaticPrayerRepository().watchTodaySchedule();
-      return;
     }
 
-    final params = settings.calculationMethod.toParameters()
-      ..madhab = settings.madhab;
+    final freshResult = await locationService.getCurrentLocation();
+    final fresh = freshResult.dataOrNull;
+    if (fresh != null) {
+      unawaited(preferencesService.setLastKnownLocation(fresh.latitude, fresh.longitude));
+      yield _scheduleFor(fresh);
+    }
+  }
+
+  PrayerSchedule _scheduleFor(GeoCoordinates coordinates) {
+    final params = settings.calculationMethod.toParameters()..madhab = settings.madhab;
     final times = adhan.PrayerTimes(
       date: DateTime.now(),
       coordinates: adhan.Coordinates(coordinates.latitude, coordinates.longitude),
       calculationParameters: params,
     );
 
-    yield PrayerSchedule(
+    return PrayerSchedule(
       isEstimated: false,
+      sunrise: times.sunrise.toLocal(),
+      location: coordinates,
       times: [
         PrayerTime(name: PrayerName.fajr, time: times.fajr.toLocal()),
         PrayerTime(name: PrayerName.dhuhr, time: times.dhuhr.toLocal()),
@@ -55,22 +71,6 @@ class AdhanPrayerRepository implements PrayerRepository {
         PrayerTime(name: PrayerName.maghrib, time: times.maghrib.toLocal()),
         PrayerTime(name: PrayerName.isha, time: times.isha.toLocal()),
       ],
-    );
-  }
-
-  Future<GeoCoordinates?> _resolveCoordinates() async {
-    final result = await locationService.getCurrentLocation();
-    return result.when(
-      success: (coords) {
-        // Cached for next time; the current calculation doesn't need to wait on it.
-        unawaited(preferencesService.setLastKnownLocation(coords.latitude, coords.longitude));
-        return coords;
-      },
-      failure: (_) {
-        final cached = preferencesService.lastKnownLocation;
-        if (cached == null) return null;
-        return GeoCoordinates(latitude: cached.$1, longitude: cached.$2);
-      },
     );
   }
 }

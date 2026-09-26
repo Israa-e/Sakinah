@@ -5,6 +5,7 @@ import '../../../core/storage/app_database.dart';
 import '../domain/home_models.dart';
 import '../domain/home_repository.dart';
 import 'daily_deed_suggestions.dart';
+import 'juz_boundaries.dart';
 
 part 'drift_home_repository.g.dart';
 
@@ -23,6 +24,7 @@ class DriftHomeRepository implements HomeRepository {
         surahNameEn: row.surahNameEn,
         ayahNumber: row.ayahNumber,
         totalAyahs: row.totalAyahs,
+        juz: juzFor(row.surahNumber, row.ayahNumber),
       );
     });
   }

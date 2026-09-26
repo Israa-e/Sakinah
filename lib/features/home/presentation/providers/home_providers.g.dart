@@ -41,10 +41,12 @@ final dailyDeedProvider = AutoDisposeStreamProvider<DailyDeed>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef DailyDeedRef = AutoDisposeStreamProviderRef<DailyDeed>;
-String _$todaysDhikrHash() => r'1442e751f38c47ed996de6009af70c304d324782';
+String _$todaysDhikrHash() => r'c4040994a9333d773dcbb39f7d1808482253101a';
 
-/// Fixed until the Dhikr feature (Phase 5) ships real rotation — see
-/// [DhikrPreview] doc comment on why the content itself is safe to hardcode.
+/// The dhikr Home suggests right now: the first unfinished item of the
+/// time-of-day category (morning / evening / after prayer), falling back to
+/// that category's first item once all are done. Text, count and source all
+/// come from the Dhikr feature's sourced catalog and today's `DhikrLogs`.
 ///
 /// Copied from [todaysDhikr].
 @ProviderFor(todaysDhikr)

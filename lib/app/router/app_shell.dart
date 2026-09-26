@@ -24,8 +24,8 @@ class AppShell extends StatelessWidget {
         ),
         items: [
           SakinahNavItem(
-            icon: Icons.home_outlined,
-            selectedIcon: Icons.home,
+            icon: Icons.mosque_outlined,
+            selectedIcon: Icons.mosque,
             label: l10n.navHome,
           ),
           SakinahNavItem(
@@ -34,13 +34,13 @@ class AppShell extends StatelessWidget {
             label: l10n.navQuran,
           ),
           SakinahNavItem(
-            icon: Icons.self_improvement_outlined,
-            selectedIcon: Icons.self_improvement,
+            icon: Icons.touch_app_outlined,
+            selectedIcon: Icons.touch_app,
             label: l10n.navDhikr,
           ),
           SakinahNavItem(
-            icon: Icons.eco_outlined,
-            selectedIcon: Icons.eco,
+            icon: Icons.explore_outlined,
+            selectedIcon: Icons.explore,
             label: l10n.navJourney,
           ),
           SakinahNavItem(

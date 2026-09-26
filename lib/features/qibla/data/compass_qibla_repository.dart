@@ -1,4 +1,5 @@
 import 'package:adhan_dart/adhan_dart.dart' show Coordinates, Qibla;
+import 'package:flutter/foundation.dart';
 import 'package:flutter_compass/flutter_compass.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -31,18 +32,24 @@ class CompassQiblaRepository implements QiblaRepository {
 
     final bearing = Qibla.qibla(Coordinates(coords!.latitude, coords!.longitude));
 
-    final compassStream = FlutterCompass.events;
+    // flutter_compass only ships Android/iOS implementations; on other
+    // platforms subscribing throws MissingPluginException from the channel.
+    final hasCompassPlugin = !kIsWeb &&
+        (defaultTargetPlatform == TargetPlatform.android ||
+            defaultTargetPlatform == TargetPlatform.iOS);
+    final compassStream = hasCompassPlugin ? FlutterCompass.events : null;
     if (compassStream == null) {
       yield const Failure(SensorFailure(debugMessage: 'Compass not supported on this device'));
       return;
     }
 
-    yield* _readingsFrom(compassStream, bearing);
+    yield* _readingsFrom(compassStream, bearing, coords!);
   }
 
   Stream<Result<QiblaReading>> _readingsFrom(
     Stream<CompassEvent> events,
     double bearing,
+    GeoCoordinates location,
   ) async* {
     try {
       await for (final event in events) {
@@ -51,6 +58,8 @@ class CompassQiblaRepository implements QiblaRepository {
             qiblaBearing: bearing,
             deviceHeading: event.heading,
             accuracy: event.accuracy,
+            latitude: location.latitude,
+            longitude: location.longitude,
           ),
         );
       }

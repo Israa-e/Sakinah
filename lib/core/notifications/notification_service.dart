@@ -42,6 +42,7 @@ class NotificationService {
         const InitializationSettings(
           android: AndroidInitializationSettings('@mipmap/ic_launcher'),
           iOS: DarwinInitializationSettings(),
+          linux: LinuxInitializationSettings(defaultActionName: 'Open Sakīnah'),
         ),
       );
       await _plugin

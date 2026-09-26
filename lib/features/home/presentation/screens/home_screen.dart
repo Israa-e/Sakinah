@@ -5,8 +5,10 @@ import '../../../../core/widgets/offline_banner.dart';
 import '../widgets/daily_intention_card.dart';
 import '../widgets/home_daily_deed_card.dart';
 import '../widgets/home_dhikr_card.dart';
+import '../widgets/home_footer_verse.dart';
 import '../widgets/home_header.dart';
 import '../widgets/home_prayer_card.dart';
+import '../widgets/home_quick_access.dart';
 import '../widgets/home_quran_progress_card.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -16,25 +18,35 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
+        bottom: false,
         child: Column(
           children: [
+            const HomeTopBar(),
             const OfflineBanner(),
             Expanded(
               child: ListView(
-                padding: const EdgeInsets.all(AppSpacing.xl),
+                padding: const EdgeInsets.fromLTRB(
+                  AppSpacing.lg,
+                  AppSpacing.sm,
+                  AppSpacing.lg,
+                  AppSpacing.xl,
+                ),
                 children: const [
-                  HomeHeader(),
-                  SizedBox(height: AppSpacing.xl),
+                  HomeGreeting(),
+                  SizedBox(height: AppSpacing.lg),
                   HomePrayerCard(),
                   SizedBox(height: AppSpacing.lg),
                   DailyIntentionCard(),
-                  SizedBox(height: AppSpacing.lg),
-                  HomeQuranProgressCard(),
-                  SizedBox(height: AppSpacing.lg),
+                  SizedBox(height: AppSpacing.md),
+                  HomeQuickAccess(),
+                  SizedBox(height: AppSpacing.md),
                   HomeDhikrCard(),
-                  SizedBox(height: AppSpacing.lg),
+                  SizedBox(height: AppSpacing.md),
+                  HomeQuranProgressCard(),
+                  SizedBox(height: AppSpacing.md),
                   HomeDailyDeedCard(),
-                  SizedBox(height: AppSpacing.xl),
+                  SizedBox(height: AppSpacing.xs),
+                  HomeFooterVerse(),
                 ],
               ),
             ),

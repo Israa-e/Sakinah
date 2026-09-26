@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:math' as math;
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -607,7 +608,27 @@ class _QuranReaderScreenState extends ConsumerState<QuranReaderScreen> {
                     child: GestureDetector(
                       behavior: HitTestBehavior.opaque,
                       onTap: _onBackgroundTap,
-                      child: pages,
+                      child: CallbackShortcuts(
+                        // Desktop: arrow keys turn pages the mushaf way — the
+                        // next page lies to the left.
+                        bindings: {
+                          const SingleActivator(LogicalKeyboardKey.arrowLeft): () =>
+                              _goToPage((_page ?? 1) + 1, animate: true),
+                          const SingleActivator(LogicalKeyboardKey.arrowRight): () =>
+                              _goToPage((_page ?? 1) - 1, animate: true),
+                        },
+                        child: Focus(
+                          autofocus: true,
+                          child: ScrollConfiguration(
+                            // Flutter ignores mouse/trackpad drags by default on
+                            // desktop; a mushaf should turn with any pointer.
+                            behavior: ScrollConfiguration.of(context).copyWith(
+                              dragDevices: PointerDeviceKind.values.toSet(),
+                            ),
+                            child: pages,
+                          ),
+                        ),
+                      ),
                     ),
                   ),
                 ),

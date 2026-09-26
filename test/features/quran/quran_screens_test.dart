@@ -1,4 +1,6 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:sakinah/app/theme/app_theme.dart';
@@ -214,6 +216,35 @@ void main() {
       await tester.tap(find.text('Retry'));
       await tester.pumpAndSettle();
       expect(find.text('tafsir-placeholder 2:2'), findsOneWidget);
+      await settle(tester);
+    });
+
+    for (final kind in [PointerDeviceKind.touch, PointerDeviceKind.mouse]) {
+      testWidgets('swiping turns the page like a mushaf (${kind.name})', (tester) async {
+        await pump(tester, const QuranReaderScreen(page: 2));
+        final pager = find.byKey(const ValueKey('mushaf-pager'));
+
+        // Next page comes in from the left: swipe left → right.
+        await tester.fling(pager, const Offset(300, 0), 1200, deviceKind: kind);
+        await tester.pumpAndSettle();
+        expect(marker(2, 6), findsOneWidget, reason: 'page 3 after swiping right');
+
+        // And back: right → left.
+        await tester.fling(pager, const Offset(-300, 0), 1200, deviceKind: kind);
+        await tester.pumpAndSettle();
+        expect(marker(2, 1), findsOneWidget, reason: 'page 2 after swiping left');
+        await settle(tester);
+      });
+    }
+
+    testWidgets('arrow keys turn pages on desktop', (tester) async {
+      await pump(tester, const QuranReaderScreen(page: 2));
+      await tester.sendKeyEvent(LogicalKeyboardKey.arrowLeft);
+      await tester.pumpAndSettle();
+      expect(marker(2, 6), findsOneWidget);
+      await tester.sendKeyEvent(LogicalKeyboardKey.arrowRight);
+      await tester.pumpAndSettle();
+      expect(marker(2, 1), findsOneWidget);
       await settle(tester);
     });
 
